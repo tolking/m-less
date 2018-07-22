@@ -1,0 +1,343 @@
+@import 'color';
+/* 尺寸 */
+.box (@width: auto, @height: auto) {
+  width: @width;
+  height: @height;
+  .max (@width: auto, @height: auto) {
+    max-width: @width;
+    max-height: @height;
+  }
+  .min (@width: auto, @height: auto) {
+    min-width: @width;
+    min-height: @height;
+  }
+  .radius (@radius) {
+    border-radius: @radius;
+  }
+  .radius (@radius, @width, @height: @width) {
+    .box(@width, @height);
+    border-radius: @radius;
+  }
+  .shadow (@x, @y, @b, @color) {
+    box-shadow: @x @y @b @color;
+  }
+  .shadow (@x, @y, @b, @color, @width, @height) {
+    .box(@width, @height);
+    box-shadow: @x @y @b @color;
+  }
+}
+
+/* 字体 */
+.font (@size: 1rem, @color: @c-text, @family: @f-base) {
+  font-size: @size;
+  color: @color;
+  font-family: @family;
+  .indent (@indent) {
+    text-indent: @indent;
+  }
+  .indent (@indent, @size, @color, @family: @f-base) {
+    .font(@size, @color, @family);
+    text-indent: @indent;
+  }
+  .height (@height) {
+    line-height: @height;
+  }
+  .height (@height, @size, @color, @family: @f-base) {
+    .font(@size, @color, @family);
+    line-height: @height;
+  }
+  .weight (@weight: normal) {
+    font-weight: @weight;
+  }
+  .weight (@weight, @size, @color, @family: @f-base) {
+    .font(@size, @color, @family);
+    font-weight: @weight;
+  }
+  .shadow (@x, @y, @b, @shadow-color) {
+    text-shadow: @x @y @b @shadow-color;
+  }
+  .shadow (@x, @y, @b, @shadow-color, @size, @color, @family: @f-base) {
+    .font(@size, @color, @family);
+    text-shadow: @x @y @b @shadow-color;
+  }
+  .stroke (@stroke-weight, @stroke-color, @weight: normal) {
+    -webkit-text-stroke: @stroke-weight @stroke-color;
+  }
+  .stroke (@stroke-weight, @stroke-color, @weight: normal, @size, @color, @family: @f-base) {
+    .weight(@weight, @size, @color, @family);
+    -webkit-text-stroke: @stroke-weight @stroke-color;
+  }
+}
+
+/* 边框 */
+.border (@weight: 1px, @color: @c-line, @style: solid) {
+  border: @weight @style @color;
+  .top (@weight: 1px, @color: @c-line, @style: solid) {
+    border-top: @weight @style @color;
+  }
+  .bottom (@weight: 1px, @color: @c-line, @style: solid) {
+    border-bottom: @weight @style @color;
+  }
+  .left (@weight: 1px, @color: @c-line, @style: solid) {
+    border-left: @weight @style @color;
+  }
+  .right (@weight: 1px, @color: @c-line, @style: solid) {
+    border-right: @weight @style @color;
+  }
+}
+
+/* 定位 */
+.fixed (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+  position: fixed;
+  z-index: @index;
+  top: @top;
+  bottom: @bottom;
+  left: @left;
+  right: @right;
+  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
+    position: fixed;
+    z-index: @index;
+    top: @top;
+    left: @left;
+    right: @right;
+  }
+  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
+    position: fixed;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+    right: @right;
+  }
+  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
+    position: fixed;
+    z-index: @index;
+    left: @left;
+    top: @top;
+    bottom: @bottom;
+  }
+  .right (@index: 1, @right: 0,@top: 0, @bottom: 0) {
+    position: fixed;
+    z-index: @index;
+    right: @right;
+    top: @top;
+    bottom: @bottom;
+  }
+  .top-left (@index: 1, @top: 0, @left: 0) {
+    position: fixed;
+    z-index: @index;
+    top: @top;
+    left: @left;
+  }
+  .top-right (@index: 1, @top: 0, @right: 0) {
+    position: fixed;
+    z-index: @index;
+    top: @top;
+    right: @right;
+  }
+  .bottom-left (@index: 1, @bottom: 0, @left: 0) {
+    position: fixed;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+  }
+  .bottom-right (@index: 1, @bottom: 0, @right: 0) {
+    position: fixed;
+    z-index: @index;
+    bottom: @bottom;
+    right: @right;
+  }
+}
+.absolute (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+  position: absolute;
+  z-index: @index;
+  top: @top;
+  bottom: @bottom;
+  left: @left;
+  right: @right;
+  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
+    position: absolute;
+    z-index: @index;
+    top: @top;
+    left: @left;
+    right: @right;
+  }
+  .bottom (@index: 1, @bottom: 0,@left: 0, @right: 0) {
+    position: absolute;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+    right: @right;
+  }
+  .left (@index: 1, @left: 0,@top: 0, @bottom: 0) {
+    position: absolute;
+    z-index: @index;
+    left: @left;
+    top: @top;
+    bottom: @bottom;
+  }
+  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
+    position: absolute;
+    z-index: @index;
+    right: @right;
+    top: @top;
+    bottom: @bottom;
+  }
+  .top-left (@index: 1, @top: 0, @left: 0) {
+    position: absolute;
+    z-index: @index;
+    top: @top;
+    left: @left;
+  }
+  .top-right (@index: 1, @top: 0, @right: 0) {
+    position: absolute;
+    z-index: @index;
+    top: @top;
+    right: @right;
+  }
+  .bottom-left (@index: 1, @bottom: 0, @left: 0) {
+    position: absolute;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+  }
+  .bottom-right (@index: 1, @bottom: 0, @right: 0) {
+    position: absolute;
+    z-index: @index;
+    bottom: @bottom;
+    right: @right;
+  }
+}
+
+/* transform */
+/* 矩阵 */
+.matrix (@a1: 0, @a2: 0, @a3: 0, @a4: 0, @a5: 0, @a6: 0) {
+  transform: matrix(@a1, @a2, @a3, @a4, @a5, @a6);
+  .matrix3d (@a1: 0,@a2: 0,@a3: 0,@a4: 0,@a5: 0,@a6: 0,@a7: 0,@a8: 0,@a9: 0,@a10: 0,@a11: 0,@a12: 0,@a13: 0,@a14: 0,@a15: 0,@a16: 0) {
+    transform: matrix3d(@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13, @a14, @a15, @a16);
+  }
+}
+/* 平移 */
+.translate (@x: 0, @y: 0) {
+  transform: translate(@x, @y);
+  .x (@x: 0) {
+    transform: translateX(@x);
+  }
+  .y (@y: 0) {
+    transform: translateY(@y);
+  }
+  .z (@z: 0) {
+    transform: translateZ(@z);
+  }
+  .translate3d (@x: 0, @y: 0, @z: 0) {
+    transform: translate3d(@x, @y, @z);
+  }
+}
+/* 缩放 */
+.scale (@x: 0, @y: 0) {
+  transform: scale(@x, @y);
+  .x (@x: 0) {
+    transform: scaleX(@x);
+  }
+  .y (@y: 0) {
+    transform: scaleY(@y);
+  }
+  .z (@z: 0) {
+    transform: scaleZ(@z);
+  }
+  .scale3d (@x: 0, @y: 0, @z: 0) {
+    transform: scale3d(@x, @y, @z)
+  }
+}
+/* 旋转 */
+.rotate (@rotate: 0deg) {
+  transform: rotate(@rotate);
+  .x (@x: 0deg) {
+    transform: rotateX(@x);
+  }
+  .y (@y: 0deg) {
+    transform: rotateY(@y);
+  }
+  .z (@z: 0deg) {
+    transform: rotateZ(@z);
+  }
+  .rotate3d (@x: 0, @y: 0, @z: 0, @rotate: 0deg) {
+    transform: rotate3d(@x, @y, @z, @rotate);
+  }
+}
+/* 倾斜 */
+.skew (@x: 0deg, @y:0deg) {
+  transform: skew(@x, @y);
+  .x (@x: 0deg) {
+    transform: skewX(@x);
+  }
+  .y (@y: 0deg) {
+    transform: skewY(@y);
+  }
+}
+
+/* 箭头 */
+.arrow {
+  .top(@width: 5px, @color: @c-block) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@width;
+    border-left: @width solid transparent;
+    border-right: @width solid transparent;
+    border-top: @width solid @color;
+  }
+  .left(@width: 5px, @color: @c-block) {
+    top: 50%;
+    right: 0;
+    margin-top: -@width;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-left: @width solid @color;
+  }
+  .bottom(@width: 5px, @color: @c-block) {
+    top: 0;
+    left: 50%;
+    margin-left: -@width;
+    border-left: @width solid transparent;
+    border-right: @width solid transparent;
+    border-bottom: @width solid @color;
+  }
+  .right(@width: 5px, @color: @c-block) {
+    top: 50%;
+    left: 0;
+    margin-top: -@width;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-right: @width solid @color;
+  }
+}
+
+/* 文字 */
+.font-hidden () {
+  .wrap () {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nowrap () {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* 动画 */
+/*  @duration: 持续时间,  
+    @delay: 延迟播放, 
+    @iteration: 播放次数(infinite: 无限次播放)
+*/
+.animation (@duration) {
+  animation-duration: @duration;
+}
+.animation (@duration, @delay) {
+  animation-duration: @duration;
+  animation-delay: @delay;
+}
+.animation (@duration, @delay, @iteration) {
+  animation-duration: @duration;
+  animation-delay: @delay;
+  animation-iteration-count: @iteration;
+}
