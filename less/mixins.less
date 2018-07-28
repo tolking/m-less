@@ -1,17 +1,69 @@
-@import 'color';
-@import 'font';
+@import "color";
+@import "font";
 
-/* 尺寸 */
+// 尺寸
 .box (@width: auto, @height: auto) {
   width: @width;
   height: @height;
+  .min (@width: auto, @height: auto) {
+    min-width: @width;
+    min-height: @height;
+  }
+  .min (@width, @height, @bwidth, @bheight: auto) {
+    .box(@bwidth, @bheight);
+    min-width: @width;
+    min-height: @height;
+  }
   .max (@width: auto, @height: auto) {
     max-width: @width;
     max-height: @height;
   }
-  .min (@width: auto, @height: auto) {
-    min-width: @width;
-    min-height: @height;
+  .max (@width, @height, @bwidth, @bheight: auto) {
+    .box(@bwidth, @bheight);
+    max-width: @width;
+    max-height: @height;
+  }
+  .shadow (@x, @y, @b, @color: @c-shadow) {
+    box-shadow: @x @y @b @color;
+  }
+  .shadow (@x, @y, @b, @color, @width, @height: auto) {
+    .box(@width, @height);
+    box-shadow: @x @y @b @color;
+  }
+  .border (@weight: 1px, @color: @c-line, @style: solid) {
+    border: @weight @style @color;
+    .top (@weight: 1px, @color: @c-line, @style: solid) {
+      border-top: @weight @style @color;
+    }
+    .bottom (@weight: 1px, @color: @c-line, @style: solid) {
+      border-bottom: @weight @style @color;
+    }
+    .left (@weight: 1px, @color: @c-line, @style: solid) {
+      border-left: @weight @style @color;
+    }
+    .right (@weight: 1px, @color: @c-line, @style: solid) {
+      border-right: @weight @style @color;
+    }
+  }
+  .border (@weight, @color, @style, @width, @height: auto) {
+    .box(@width, @height);
+    border: @weight @style @color;
+    .top (@weight, @color, @style, @width, @height: auto) {
+      .box(@width, @height);
+      border-top: @weight @style @color;
+    }
+    .bottom (@weight, @color, @style, @width, @height: auto) {
+      .box(@width, @height);
+      border-bottom: @weight @style @color;
+    }
+    .left (@weight, @color, @style, @width, @height: auto) {
+      .box(@width, @height);
+      border-left: @weight @style @color;
+    }
+    .right (@weight, @color, @style, @width, @height: auto) {
+      .box(@width, @height);
+      border-right: @weight @style @color;
+    }
   }
   .radius (@radius) {
     border-radius: @radius;
@@ -20,16 +72,17 @@
     .box(@width, @height);
     border-radius: @radius;
   }
-  .shadow (@x, @y, @b, @color) {
-    box-shadow: @x @y @b @color;
-  }
-  .shadow (@x, @y, @b, @color, @width, @height) {
-    .box(@width, @height);
-    box-shadow: @x @y @b @color;
-  }
 }
 
-/* 字体 */
+// 背景
+.bg (...) {
+  background: @arguments;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+// 字体
 .font (@size: 1rem, @color: @c-text, @family: @f-base) {
   font-size: @size;
   color: @color;
@@ -37,58 +90,43 @@
   .indent (@indent) {
     text-indent: @indent;
   }
-  .indent (@indent, @size, @color, @family: @f-base) {
+  .indent (@indent, @size, @color: @c-text, @family: @f-base) {
     .font(@size, @color, @family);
     text-indent: @indent;
   }
   .height (@height) {
     line-height: @height;
   }
-  .height (@height, @size, @color, @family: @f-base) {
+  .height (@height, @size, @color: @c-text, @family: @f-base) {
     .font(@size, @color, @family);
     line-height: @height;
   }
   .weight (@weight: normal) {
     font-weight: @weight;
   }
-  .weight (@weight, @size, @color, @family: @f-base) {
+  .weight (@weight, @size, @color: @c-text, @family: @f-base) {
     .font(@size, @color, @family);
     font-weight: @weight;
   }
-  .shadow (@x, @y, @b, @shadow-color) {
+  .shadow (@x, @y, @b, @shadow-color: @c-shadow) {
     text-shadow: @x @y @b @shadow-color;
   }
-  .shadow (@x, @y, @b, @shadow-color, @size, @color, @family: @f-base) {
+  .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text, @family: @f-base) {
     .font(@size, @color, @family);
     text-shadow: @x @y @b @shadow-color;
   }
-  .stroke (@stroke-weight, @stroke-color, @weight: normal) {
-    -webkit-text-stroke: @stroke-weight @stroke-color;
+  .stroke (@stroke-weight, @stroke-color, @weight) {
+    font-weight: @weight;
+    .prew(text-stroke, @stroke-weight @stroke-color);
   }
-  .stroke (@stroke-weight, @stroke-color, @weight: normal, @size, @color, @family: @f-base) {
-    .weight(@weight, @size, @color, @family);
-    -webkit-text-stroke: @stroke-weight @stroke-color;
-  }
-}
-
-/* 边框 */
-.border (@weight: 1px, @color: @c-line, @style: solid) {
-  border: @weight @style @color;
-  .top (@weight: 1px, @color: @c-line, @style: solid) {
-    border-top: @weight @style @color;
-  }
-  .bottom (@weight: 1px, @color: @c-line, @style: solid) {
-    border-bottom: @weight @style @color;
-  }
-  .left (@weight: 1px, @color: @c-line, @style: solid) {
-    border-left: @weight @style @color;
-  }
-  .right (@weight: 1px, @color: @c-line, @style: solid) {
-    border-right: @weight @style @color;
+  .stroke (@stroke-weight, @stroke-color, @weight, @size, @color: @c-text, @family: @f-base) {
+    .font(@size, @color, @family);
+    font-weight: @weight;
+    .prew(text-stroke, @stroke-weight @stroke-color);
   }
 }
 
-/* 定位 */
+// 定位
 .fixed (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
   position: fixed;
   z-index: @index;
@@ -209,111 +247,216 @@
     right: @right;
   }
 }
-
-/* transform */
-/* 矩阵 */
-.matrix (@a1: 0, @a2: 0, @a3: 0, @a4: 0, @a5: 0, @a6: 0) {
-  transform: matrix(@a1, @a2, @a3, @a4, @a5, @a6);
-  .matrix3d (@a1: 0,@a2: 0,@a3: 0,@a4: 0,@a5: 0,@a6: 0,@a7: 0,@a8: 0,@a9: 0,@a10: 0,@a11: 0,@a12: 0,@a13: 0,@a14: 0,@a15: 0,@a16: 0) {
-    transform: matrix3d(@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13, @a14, @a15, @a16);
+.relative (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+  position: relative;
+  z-index: @index;
+  top: @top;
+  bottom: @bottom;
+  left: @left;
+  right: @right;
+  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
+    position: relative;
+    z-index: @index;
+    top: @top;
+    left: @left;
+    right: @right;
+  }
+  .bottom (@index: 1, @bottom: 0,@left: 0, @right: 0) {
+    position: relative;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+    right: @right;
+  }
+  .left (@index: 1, @left: 0,@top: 0, @bottom: 0) {
+    position: relative;
+    z-index: @index;
+    left: @left;
+    top: @top;
+    bottom: @bottom;
+  }
+  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
+    position: relative;
+    z-index: @index;
+    right: @right;
+    top: @top;
+    bottom: @bottom;
+  }
+  .top-left (@index: 1, @top: 0, @left: 0) {
+    position: relative;
+    z-index: @index;
+    top: @top;
+    left: @left;
+  }
+  .top-right (@index: 1, @top: 0, @right: 0) {
+    position: relative;
+    z-index: @index;
+    top: @top;
+    right: @right;
+  }
+  .bottom-left (@index: 1, @bottom: 0, @left: 0) {
+    position: relative;
+    z-index: @index;
+    bottom: @bottom;
+    left: @left;
+  }
+  .bottom-right (@index: 1, @bottom: 0, @right: 0) {
+    position: relative;
+    z-index: @index;
+    bottom: @bottom;
+    right: @right;
   }
 }
-/* 平移 */
+
+// transform
+// 矩阵
+.matrix (@a1: 0, @a2: 0, @a3: 0, @a4: 0, @a5: 0, @a6: 0) {
+  .pre(transform, matrix(@a1, @a2, @a3, @a4, @a5, @a6));
+  .matrix3d (@a1: 0,@a2: 0,@a3: 0,@a4: 0,@a5: 0,@a6: 0,@a7: 0,@a8: 0,@a9: 0,@a10: 0,@a11: 0,@a12: 0,@a13: 0,@a14: 0,@a15: 0,@a16: 0) {
+    .pre(transform, matrix3d(@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13, @a14, @a15, @a16));
+  }
+}
+// 平移
 .translate (@x: 0, @y: 0) {
-  transform: translate(@x, @y);
+  .pre(transform, translate(@x, @y));
   .x (@x: 0) {
-    transform: translateX(@x);
+    .pre(transform, translateX(@x));
   }
   .y (@y: 0) {
-    transform: translateY(@y);
+    .pre(transform, translateY(@x, @y));
   }
   .z (@z: 0) {
-    transform: translateZ(@z);
+    .pre(transform, translateZ(@z));
   }
   .translate3d (@x: 0, @y: 0, @z: 0) {
-    transform: translate3d(@x, @y, @z);
+    .pre(transform, translate3d(@x, @y, @z));
   }
 }
-/* 缩放 */
+// 缩放
 .scale (@x: 0, @y: 0) {
-  transform: scale(@x, @y);
+  .pre(transform, scale(@x, @y));
   .x (@x: 0) {
-    transform: scaleX(@x);
+    .pre(transform, scaleX(@x));
   }
   .y (@y: 0) {
-    transform: scaleY(@y);
+    .pre(transform, scaleY(@y));
   }
   .z (@z: 0) {
-    transform: scaleZ(@z);
+    .pre(transform, scaleZ(@z));
   }
   .scale3d (@x: 0, @y: 0, @z: 0) {
-    transform: scale3d(@x, @y, @z)
+    .pre(transform, scale3d(@x, @y, @z));
   }
 }
-/* 旋转 */
+// 旋转
 .rotate (@rotate: 0deg) {
-  transform: rotate(@rotate);
+  .pre(transform, rotate(@x, @y));
   .x (@x: 0deg) {
-    transform: rotateX(@x);
+    .pre(transform, rotateX(@x));
   }
   .y (@y: 0deg) {
-    transform: rotateY(@y);
+    .pre(transform, rotateY(@y));
   }
   .z (@z: 0deg) {
-    transform: rotateZ(@z);
+    .pre(transform, rotateZ(@z));
   }
   .rotate3d (@x: 0, @y: 0, @z: 0, @rotate: 0deg) {
-    transform: rotate3d(@x, @y, @z, @rotate);
+    .pre(transform, rotate3d(@x, @y, @z, @rotate));
   }
 }
-/* 倾斜 */
+// 倾斜
 .skew (@x: 0deg, @y:0deg) {
-  transform: skew(@x, @y);
+  .pre(transform, skew(@x, @y));
   .x (@x: 0deg) {
-    transform: skewX(@x);
+    .pre(transform, skewX(@x, @y));
   }
   .y (@y: 0deg) {
-    transform: skewY(@y);
+    .pre(transform, skewY(@y));
   }
 }
 
-/* 箭头 */
-.arrow {
-  .top(@width: 5px, @color: @c-block) {
+// 滤镜
+.filter (@filter) {
+  .prew(filter, @filter);
+}
+// 高斯模糊
+.blur (@blur) {
+  .prew(filter, blur(@blur));
+}
+// 灰度
+.grayscale (@grayscale) {
+  .prew(filter, grayscale(@grayscale))
+}
+// 褐色
+.sepia (@sepia) {
+  .prew(filter, sepia(@sepia));
+}
+// 饱和度
+.saturate (@saturate) {
+  .prew(filter, saturate(@saturate));
+}
+// 色相旋转
+.hue-rotate (@hue-rotate) {
+  .prew(filter, hue-rotate(@hue-rotate));
+}
+// 反色
+.invert (@invert) {
+  .prew(filter, invert(@invert));
+}
+// 透明度
+.opacity (@opacity) {
+  .prew(filter, opacity(@opacity));
+}
+// 亮度
+.brightness (@brightness) {
+  .prew(filter, brightness(@brightness));
+}
+// 对比度
+.contrast (@contrast) {
+  .prew(filter, contrast(@contrast));
+}
+// 阴影
+.drop-shadow (@x, @y, @b, @color: @c-shadow) {
+  .prew(filter, drop-shadow(@x, @y, @b, @color));
+}
+
+// 箭头
+.arrow () {
+  .top(@width: 5px, @color: @c-line) {
     bottom: 0;
     left: 50%;
     margin-left: -@width;
-    border-left: @width solid transparent;
-    border-right: @width solid transparent;
+    border-left: @width solid @c-t;
+    border-right: @width solid @c-t;
     border-top: @width solid @color;
   }
-  .left(@width: 5px, @color: @c-block) {
+  .left(@width: 5px, @color: @c-line) {
     top: 50%;
     right: 0;
     margin-top: -@width;
-    border-top: @width solid transparent;
-    border-bottom: @width solid transparent;
+    border-top: @width solid @c-t;
+    border-bottom: @width solid @c-t;
     border-left: @width solid @color;
   }
-  .bottom(@width: 5px, @color: @c-block) {
+  .bottom(@width: 5px, @color: @c-line) {
     top: 0;
     left: 50%;
     margin-left: -@width;
-    border-left: @width solid transparent;
-    border-right: @width solid transparent;
+    border-left: @width solid @c-t;
+    border-right: @width solid @c-t;
     border-bottom: @width solid @color;
   }
-  .right(@width: 5px, @color: @c-block) {
+  .right(@width: 5px, @color: @c-line) {
     top: 50%;
     left: 0;
     margin-top: -@width;
-    border-top: @width solid transparent;
-    border-bottom: @width solid transparent;
+    border-top: @width solid @c-t;
+    border-bottom: @width solid @c-t;
     border-right: @width solid @color;
   }
 }
 
-/* 文字 */
+// 文本隐藏
 .font-hidden () {
   .wrap () {
     overflow: hidden;
@@ -326,20 +469,25 @@
   }
 }
 
-/* 动画 */
-/*  @duration: 持续时间,  
-    @delay: 延迟播放, 
-    @iteration: 播放次数(infinite: 无限次播放)
-*/
-.animation (@duration) {
-  animation-duration: @duration;
+// 动画
+.animation (@animation) {
+  .pre(animation, @animation);
 }
-.animation (@duration, @delay) {
-  animation-duration: @duration;
-  animation-delay: @delay;
+// @duration: 持续时间,  @delay: 延迟播放, @iteration: 播放次数(infinite: 无限次播放)
+.animation-state (@duration, @delay: 0s, @iteration: infinite) {
+  .pre(animation-duration, @duration);
+  .pre(animation-delay, @delay);
+  .pre(animation-iteration-count, @iteration);
 }
-.animation (@duration, @delay, @iteration) {
-  animation-duration: @duration;
-  animation-delay: @delay;
-  animation-iteration-count: @iteration;
+
+// 处理前缀
+.pre (@style, @value) {
+  -webkit-@{style}: @value;
+  -moz-@{style}: @value;
+  -ms-@{style}: @value;
+  @{style}: @value;
+}
+.prew (@style, @value) {
+  -webkit-@{style}: @value;
+  @{style}: @value;
 }

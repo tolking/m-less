@@ -1,15 +1,49 @@
 # m-less
 
-### 自用的less文件，结合webpack更好的使用
+## 自用的less文件，结合webpack更好的使用
+## 组件开发
 
-1. index.less  样式入口文件（必须）
-- 在项目中引入，或者引入其它less文件
-- 还可以直接在index.less引入css文件
-```less
-@import "animate.css";
+1. 在项目 main.js 中引入 styles.less
+```js
+import "./less/styles.less";
 ```
-- 在其中可以定义html的font-size（默认 20px），来使用rem
-- 写一些简单的公共样式也是不错的
+
+2. 在需要使用 mixins 的地方引入 mixins.less
+```css
+@import "./less/mixins";
+```
+
+## 静态页面开发
+### 需要在本地服务器环境下进行
+
+1. 在 html 的 header 里面引用 less 及相关配置
+```html
+<header>
+  <link rel="stylesheet/less" type="text/css" href="./less/styles.less" />
+  <script>
+    less = {
+      env: "development",
+      async: false,
+      fileAsync: false,
+      poll: 1000,
+      functions: {},
+      dumpLineNumbers: "comments",
+      relativeUrls: false,
+      rootpath: "/"
+    };
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+</header>
+```
+
+2. 生产时将 less 编译为 css
++ node 使用 lessc styles.less styles.css 编译 less 为 css
++ 屏蔽上面开发代码，引入 styles.css
+
+## 简介
+
+1. styles.less  样式入口文件（必须）
+- 在项目中引入，或者引入其它less文件
 
 2. mixins.less  Mixin入口文件（必须）
 [具体的参数详解](https://ououe.com) 搭建中。。。。
@@ -40,14 +74,15 @@
 - 直接在需要的 class 里面加类名就行了
 ```html
 <div class="flex-cc">
-  <p>我想水平垂直居中</p>
+  <p>center center</p>
 </div>
 ```
 
 5. color.less  整体颜色（建议）
-- 里面写整体网站的颜色信息
 - 方便管理整体网站的配色
-- @c-text 与 @c-line 是必须项，可以改颜色，去掉会报错
+- 里面写整体网站的颜色信息
+- 提供一些默认颜色
+- 部分颜色是必须项，可以改颜色，去掉会报错
 ```css
 @import url("./less/mixins");
 

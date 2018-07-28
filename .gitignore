@@ -1,0 +1,12 @@
+.DS_Store
+index.html
+WebServer.js
+less/styles.css
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln

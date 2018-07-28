@@ -1,7 +1,24 @@
-/* 必须颜色 */
-@c-text: #666;
-@c-line: #d0d0d0;
+// 必须颜色，只能够修改，不可删除
+@c-text: @c-gray; // 字体默认颜色
+@c-line: @c-silver; // 线条默认颜色
+@c-shadow: fade(@c-black, 30%); // 阴影默认颜色
+@c-t: transparent; // 透明
 
-/* 其它颜色 */
-@c-black: #000;
-@c-white: #fff;
+// 参考颜色
+@c-navy: #001f3f;
+@c-blue: #0074D9;
+@c-aqua: #7FDBFF;
+@c-teal: #39CCCC;
+@c-olive: #3D9970;
+@green: #2ECC40;
+@c-lime: #01FF70;
+@c-yellow: #FFDC00;
+@c-orange: #FF851B;
+@c-red: #FF4136;
+@c-maroon: #85144b;
+@c-fuchsia: #F012BE;
+@c-purple: #B10DC9;
+@c-black: #111111;
+@c-gray: #AAAAAA;
+@c-silver: #DDDDDD;
+@c-white: #FFFFFF;
