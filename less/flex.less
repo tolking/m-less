@@ -1,54 +1,76 @@
-// 水平、垂直居中
-.flex-cc {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import "mixins";
+
+// .flex-test {
+//   .flex;
+//   .flex-direction(row);
+//   .flex-wrap(nowrap);
+//   .justify-content(flex-start);
+//   .align-items(center);
+//   .align-content(stretch);
+// }
+// 水平单列向下排列
+.flex-c {
+  .flex>.box;
+  .flex-direction>.column;
 }
-// 水平单列靠两边
-.flex-sbc {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-// 水平靠两边向下换行
-.flex-wss {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-}
-// 水平单列向下换行垂直居中
-.flex-ccc {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-// 水平靠左垂直居中
-.flex-fsc {
-  display: flex;
-  align-items: center;
-}
-// 垂直单列靠两边
-.flex-csbc {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-// 水平靠左并向下换行
+// 水平单列向下排列、排满向右换列
 .flex-cw {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  .flex>.box;
+  .flex-direction>.column;
+  .flex-wrap>.wrap;
 }
-// 水平靠左排满向下换行
+// 水平靠左排满换行
 .flex-w {
-  display: flex;
-  flex-wrap: wrap;
+  .flex>.box;
+  .flex-wrap>.wrap;
+}
+// 水平单行居中、垂直居中
+.flex-cc {
+  .flex>.box;
+  .justify-content>.center;
+  .align-items>.center;
+}
+// 水平单列向下换行、垂直居中
+.flex-ccc {
+  .flex>.box;
+  .flex-direction>.column;
+  .justify-content>.center;
+  .align-items>.center;
+}
+// 水平单行靠两边、垂直居中
+.flex-bc {
+  .flex>.box;
+  .justify-content>.between;
+  .align-items>.center;
+}
+// 水平单行平均间隙、垂直居中
+.flex-ac {
+  .flex>.box;
+  .justify-content>.around;
+  .align-items>.center;
+}
+// 水平靠两边、排满向下换行
+.flex-wb {
+  .flex>.box;
+  .flex-wrap>.wrap;
+  .justify-content>.between;
+}
+// 水平靠两边、排满向下换行、垂直居中
+.flex-wbs {
+  .flex>.box;
+  .flex-wrap>.wrap;
+  .justify-content>.between;
+  .align-content(space-between);
+}
+// 水平单列向下换行、垂直靠两边
+.flex-cbc {
+  .flex>.box;
+  .flex-direction>.column;
+  .justify-content>.between;
+  .align-items>.center;
 }
 // 向左排列、配合定位使用
 .reverse {
-  flex-direction: row-reverse;
-  flex-wrap: wrap-reverse;
+  .flex-direction>.row-r;
+  .flex-wrap>.wrap-r;
 }

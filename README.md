@@ -19,7 +19,7 @@ import "./less/styles.less";
 1. 在 html 的 header 里面引用 less 及相关配置
 ```html
 <header>
-  <link rel="stylesheet/less" type="text/css" href="./less/styles.less" />
+  <link rel="stylesheet/less" type="text/css" href="./less/styles.less">
   <script>
     less = {
       env: "development",
