@@ -1,4 +1,5 @@
 .DS_Store
+.gitignore
 index.html
 WebServer.js
 less/styles.css
