@@ -1,7 +1,8 @@
 .DS_Store
 .gitignore
 index.html
-WebServer.js
+less.js
+server.js
 less/styles.css
 
 # Editor directories and files

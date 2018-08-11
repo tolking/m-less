@@ -87,14 +87,14 @@ import "./less/styles.less";
 @import url("./less/mixins");
 
 .test {
-  .font>.weight(800, 1rem, @c-text, @f-yahei);
+  .font>.weight(800, 1rem, @c-text);
 }
 
 // 编译后
 .test {
   font-size: 1rem;
   color: #666;
-  font-family: MicrosoftYaHei;
+  line-height: 1rem;
   font-weight: 800;
 }
 ```

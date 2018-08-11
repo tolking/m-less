@@ -83,35 +83,35 @@
 }
 
 // 字体
-.font (@size: 1rem, @color: @c-text, @family: @f-base) {
+.font (@size: 1rem, @color: @c-text) {
   font-size: @size;
   color: @color;
-  font-family: @family;
+  line-height: @size;
   .indent (@indent) {
     text-indent: @indent;
   }
-  .indent (@indent, @size, @color: @c-text, @family: @f-base) {
+  .indent (@indent, @size, @color: @c-text) {
     .font(@size, @color, @family);
     text-indent: @indent;
   }
   .height (@height) {
     line-height: @height;
   }
-  .height (@height, @size, @color: @c-text, @family: @f-base) {
+  .height (@height, @size, @color: @c-text) {
     .font(@size, @color, @family);
     line-height: @height;
   }
   .weight (@weight: normal) {
     font-weight: @weight;
   }
-  .weight (@weight, @size, @color: @c-text, @family: @f-base) {
+  .weight (@weight, @size, @color: @c-text) {
     .font(@size, @color, @family);
     font-weight: @weight;
   }
   .shadow (@x, @y, @b, @shadow-color: @c-shadow) {
     text-shadow: @x @y @b @shadow-color;
   }
-  .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text, @family: @f-base) {
+  .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text) {
     .font(@size, @color, @family);
     text-shadow: @x @y @b @shadow-color;
   }
@@ -119,11 +119,17 @@
     font-weight: @weight;
     .prew(text-stroke, @stroke-weight @stroke-color);
   }
-  .stroke (@stroke-weight, @stroke-color, @weight, @size, @color: @c-text, @family: @f-base) {
+  .stroke (@stroke-weight, @stroke-color, @weight, @size, @color: @c-text) {
     .font(@size, @color, @family);
     font-weight: @weight;
     .prew(text-stroke, @stroke-weight @stroke-color);
   }
+}
+.font (@size, @color, @family) {
+  font-size: @size;
+  color: @color;
+  line-height: @size;
+  font-family: @family;
 }
 
 // 定位
