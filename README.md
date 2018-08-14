@@ -42,7 +42,7 @@ import "./less/styles.less";
 
 ## 简介
 
-1. styles.less  样式入口文件（必须）
+1. styles.less 样式入口文件（必须）
 - 在项目中引入，或者引入其它less文件
 
 2. mixins.less  Mixin入口文件（必须）
@@ -99,5 +99,5 @@ import "./less/styles.less";
 }
 ```
 
-6. font.less  整体文字（可选）
-- 方便管理网站整体的文字样式
+6. family.less  字体文件
+- 方便管理网站整体的文字字体样式

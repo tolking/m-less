@@ -1,5 +1,5 @@
 @import "color";
-@import "font";
+@import "family";
 
 // 尺寸
 .box (@width: auto, @height: auto) {
@@ -91,28 +91,28 @@
     text-indent: @indent;
   }
   .indent (@indent, @size, @color: @c-text) {
-    .font(@size, @color, @family);
+    .font(@size, @color);
     text-indent: @indent;
   }
   .height (@height) {
     line-height: @height;
   }
   .height (@height, @size, @color: @c-text) {
-    .font(@size, @color, @family);
+    .font(@size, @color);
     line-height: @height;
   }
   .weight (@weight: normal) {
     font-weight: @weight;
   }
   .weight (@weight, @size, @color: @c-text) {
-    .font(@size, @color, @family);
+    .font(@size, @color);
     font-weight: @weight;
   }
   .shadow (@x, @y, @b, @shadow-color: @c-shadow) {
     text-shadow: @x @y @b @shadow-color;
   }
   .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text) {
-    .font(@size, @color, @family);
+    .font(@size, @color);
     text-shadow: @x @y @b @shadow-color;
   }
   .stroke (@stroke-weight, @stroke-color, @weight) {
@@ -120,7 +120,7 @@
     .prew(text-stroke, @stroke-weight @stroke-color);
   }
   .stroke (@stroke-weight, @stroke-color, @weight, @size, @color: @c-text) {
-    .font(@size, @color, @family);
+    .font(@size, @color);
     font-weight: @weight;
     .prew(text-stroke, @stroke-weight @stroke-color);
   }
