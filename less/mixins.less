@@ -86,7 +86,6 @@
 .font (@size: 1rem, @color: @c-text) {
   font-size: @size;
   color: @color;
-  line-height: @size;
   .indent (@indent) {
     text-indent: @indent;
   }
@@ -128,7 +127,6 @@
 .font (@size, @color, @family) {
   font-size: @size;
   color: @color;
-  line-height: @size;
   font-family: @family;
 }
 
@@ -323,7 +321,7 @@
   }
 }
 // 平移
-.translate (@x: 0, @y: 0) {
+.translate (@x: 0, @y: @x) {
   .pre(transform, translate(@x, @y));
   .x (@x: 0) {
     .pre(transform, translateX(@x));
@@ -339,7 +337,7 @@
   }
 }
 // 缩放
-.scale (@x: 0, @y: 0) {
+.scale (@x: 0, @y: @x) {
   .pre(transform, scale(@x, @y));
   .x (@x: 0) {
     .pre(transform, scaleX(@x));
@@ -371,7 +369,7 @@
   }
 }
 // 倾斜
-.skew (@x: 0deg, @y:0deg) {
+.skew (@x: 0deg, @y: @x) {
   .pre(transform, skew(@x, @y));
   .x (@x: 0deg) {
     .pre(transform, skewX(@x, @y));
@@ -429,35 +427,39 @@
 // 箭头
 .arrow () {
   .top(@width: 5px, @color: @c-line) {
-    bottom: 0;
-    left: 50%;
-    margin-left: -@width;
+    border-left: @width solid @c-t;
+    border-right: @width solid @c-t;
+    border-bottom: @width solid @color;
+  }
+  .bottom(@width: 5px, @color: @c-line) {
     border-left: @width solid @c-t;
     border-right: @width solid @c-t;
     border-top: @width solid @color;
   }
   .left(@width: 5px, @color: @c-line) {
-    top: 50%;
-    right: 0;
-    margin-top: -@width;
+    border-top: @width solid @c-t;
+    border-bottom: @width solid @c-t;
+    border-right: @width solid @color;
+  }
+  .right(@width: 5px, @color: @c-line) {
     border-top: @width solid @c-t;
     border-bottom: @width solid @c-t;
     border-left: @width solid @color;
   }
-  .bottom(@width: 5px, @color: @c-line) {
-    top: 0;
-    left: 50%;
-    margin-left: -@width;
-    border-left: @width solid @c-t;
-    border-right: @width solid @c-t;
-    border-bottom: @width solid @color;
-  }
-  .right(@width: 5px, @color: @c-line) {
-    top: 50%;
-    left: 0;
-    margin-top: -@width;
-    border-top: @width solid @c-t;
+  .top-left(@width: 5px, @color: @c-line) {
     border-bottom: @width solid @c-t;
+    border-left: @width solid @color;
+  }
+  .top-right(@width: 5px, @color: @c-line) {
+    border-bottom: @width solid @c-t;
+    border-right: @width solid @color;
+  }
+  .bottom-left(@width: 5px, @color: @c-line) {
+    border-top: @width solid @c-t;
+    border-left: @width solid @color;
+  }
+  .bottom-right(@width: 5px, @color: @c-line) {
+    border-top: @width solid @c-t;
     border-right: @width solid @color;
   }
 }
