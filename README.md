@@ -94,7 +94,6 @@ import "./less/styles.less";
 .test {
   font-size: 1rem;
   color: #666;
-  line-height: 1rem;
   font-weight: 800;
 }
 ```
