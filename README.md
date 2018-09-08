@@ -14,7 +14,7 @@ import "./less/styles.less";
 ```
 
 ## 静态页面开发
-### 需要在本地服务器环境下进行
+### 需要在本地服务器环境下进行
 
 1. 在 html 的 header 里面引用 less 及相关配置
 ```html
@@ -78,7 +78,7 @@ import "./less/styles.less";
 </div>
 ```
 
-5. color.less  整体颜色（建议）
+5. color.less  整体颜色（建议）
 - 方便管理整体网站的配色
 - 里面写整体网站的颜色信息
 - 提供一些默认颜色
