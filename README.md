@@ -44,6 +44,8 @@ import "./less/styles.less";
 
 1. styles.less 样式入口文件（必须）
 - 在项目中引入，或者引入其它less文件
+- 定义了默认字体
+- 设置 html font-size 为 20px 方便使用 rem
 
 2. mixins.less  Mixin入口文件（必须）
 [具体的参数详解](https://ououe.com) 搭建中。。。。
