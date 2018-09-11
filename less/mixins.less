@@ -1,609 +1,382 @@
+@import "alias";
+@import "mixitem";
 @import "color";
 @import "family";
 
 // 尺寸
 .box (@width: auto, @height: auto) {
-  width: @width;
-  height: @height;
+  .w(@width);
+  .h(@height);
   .min (@width: auto, @height: auto) {
-    min-width: @width;
-    min-height: @height;
+    .minw(@width);
+    .minh(@height);
   }
   .min (@width, @height, @bwidth, @bheight: auto) {
     .box(@bwidth, @bheight);
-    min-width: @width;
-    min-height: @height;
+    .minw(@width);
+    .minh(@height);
   }
   .max (@width: auto, @height: auto) {
-    max-width: @width;
-    max-height: @height;
+    .maxw(@width);
+    .maxh(@height);
   }
   .max (@width, @height, @bwidth, @bheight: auto) {
     .box(@bwidth, @bheight);
-    max-width: @width;
-    max-height: @height;
+    .maxw(@width);
+    .maxh(@height);
   }
   .shadow (@x, @y, @b, @color: @c-shadow) {
-    box-shadow: @x @y @b @color;
+    .bs(@x, @y, @b, @color);
   }
   .shadow (@x, @y, @b, @color, @width, @height: auto) {
     .box(@width, @height);
-    box-shadow: @x @y @b @color;
+    .bs(@x, @y, @b, @color);
   }
   .border (@weight: 1px, @color: @c-line, @style: solid) {
-    border: @weight @style @color;
+    .bd(@weight, @style, @color);
     .top (@weight: 1px, @color: @c-line, @style: solid) {
-      border-top: @weight @style @color;
+      .bdt(@weight, @style, @color);
     }
     .bottom (@weight: 1px, @color: @c-line, @style: solid) {
-      border-bottom: @weight @style @color;
+      .bdb(@weight, @style, @color);
     }
     .left (@weight: 1px, @color: @c-line, @style: solid) {
-      border-left: @weight @style @color;
+      .bdl(@weight, @style, @color);
     }
     .right (@weight: 1px, @color: @c-line, @style: solid) {
-      border-right: @weight @style @color;
+      .bdr(@weight, @style, @color);
     }
   }
   .border (@weight, @color, @style, @width, @height: auto) {
     .box(@width, @height);
-    border: @weight @style @color;
+    .bd(@weight, @style, @color);
     .top (@weight, @color, @style, @width, @height: auto) {
       .box(@width, @height);
-      border-top: @weight @style @color;
+      .bdt(@weight, @style, @color);
     }
     .bottom (@weight, @color, @style, @width, @height: auto) {
       .box(@width, @height);
-      border-bottom: @weight @style @color;
+      .bdb(@weight, @style, @color);
     }
     .left (@weight, @color, @style, @width, @height: auto) {
       .box(@width, @height);
-      border-left: @weight @style @color;
+      .bdl(@weight, @style, @color);
     }
     .right (@weight, @color, @style, @width, @height: auto) {
       .box(@width, @height);
-      border-right: @weight @style @color;
+      .bdr(@weight, @style, @color);
     }
   }
   .radius (@radius) {
-    border-radius: @radius;
+    .br(@radius);
   }
   .radius (@radius, @width, @height: @width) {
     .box(@width, @height);
-    border-radius: @radius;
+    .br(@radius);
   }
 }
 
 // 背景
 .bg (...) {
   background: @arguments;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
+}
+.imgbg (@url) {
+  .bgi(@url);
+  .bgr(no-repeat);
+  .bgp(center);
+  .bgs(100%);
 }
 
 // 字体
 .font (@size: 1rem, @color: @c-text) {
-  font-size: @size;
-  color: @color;
+  .fs(@size);
+  .c(@color);
   .indent (@indent) {
-    text-indent: @indent;
+    .ti(@indent);
   }
   .indent (@indent, @size, @color: @c-text) {
     .font(@size, @color);
-    text-indent: @indent;
+    .ti(@indent);
   }
   .height (@height) {
-    line-height: @height;
+    .lh(@height);
   }
   .height (@height, @size, @color: @c-text) {
     .font(@size, @color);
-    line-height: @height;
+    .lh(@height);
   }
   .weight (@weight: normal) {
-    font-weight: @weight;
+    .fw(@weight);
   }
   .weight (@weight, @size, @color: @c-text) {
     .font(@size, @color);
-    font-weight: @weight;
+    .fw(@weight);
   }
   .shadow (@x, @y, @b, @shadow-color: @c-shadow) {
-    text-shadow: @x @y @b @shadow-color;
+    .ts(@x, @y, @b, @shadow-color);
   }
   .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text) {
     .font(@size, @color);
-    text-shadow: @x @y @b @shadow-color;
+    .ts(@x, @y, @b, @shadow-color);
   }
   .stroke (@stroke-weight, @stroke-color, @weight) {
-    font-weight: @weight;
-    .prew(text-stroke, @stroke-weight @stroke-color);
+    .fw(@weight);
+    .tso(@stroke-weight, @stroke-color);
   }
   .stroke (@stroke-weight, @stroke-color, @weight, @size, @color: @c-text) {
     .font(@size, @color);
-    font-weight: @weight;
-    .prew(text-stroke, @stroke-weight @stroke-color);
+    .fw(@weight);
+    .tso(@stroke-weight, @stroke-color);
   }
 }
 .font (@size, @color, @family) {
-  font-size: @size;
-  color: @color;
-  font-family: @family;
+  .fs(@size);
+  .c(@color);
+  .ff(@family);
 }
 
 // 定位
+.position (@p: absolute, @index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+  .pos(@p);
+  .zi(@index);
+  .t(@top);
+  .b(@bottom);
+  .l(@left);
+  .r(@right);
+  .top (@p, @index: 1, @top: 0, @left: 0, @right: 0) {
+    .pos(@p);
+    .zi(@index);
+    .t(@top);
+    .l(@left);
+    .r(@right);
+  }
+  .bottom (@p, @index: 1, @bottom: 0, @left: 0, @right: 0) {
+    .pos(@p);
+    .zi(@index);
+    .b(@bottom);
+    .l(@left);
+    .r(@right);
+  }
+  .left (@p, @index: 1, @left: 0, @top: 0, @bottom: 0) {
+    .pos(@p);
+    .zi(@index);
+    .t(@top);
+    .b(@bottom);
+    .l(@left);
+  }
+  .right (@p, @index: 1, @right: 0,@top: 0, @bottom: 0) {
+    .pos(@p);
+    .zi(@index);
+    .t(@top);
+    .b(@bottom);
+    .r(@right);
+  }
+  .top-left (@p, @index: 1, @top: 0, @left: 0) {
+    .pos(@p);
+    .zi(@index);
+    .t(@top);
+    .l(@left);
+  }
+  .top-right (@p, @index: 1, @top: 0, @right: 0) {
+    .pos(@p);
+    .zi(@index);
+    .t(@top);
+    .r(@right);
+  }
+  .bottom-left (@p, @index: 1, @bottom: 0, @left: 0) {
+    .pos(@p);
+    .zi(@index);
+    .b(@bottom);
+    .l(@left);
+  }
+  .bottom-right (@p, @index: 1, @bottom: 0, @right: 0) {
+    .pos(@p);
+    .zi(@index);
+    .b(@bottom);
+    .r(@right);
+  }
+}
 .fixed (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  position: fixed;
-  z-index: @index;
-  top: @top;
-  bottom: @bottom;
-  left: @left;
-  right: @right;
+  .position(fixed, @index, @top, @bottom, @left, @right);
   .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    position: fixed;
-    z-index: @index;
-    top: @top;
-    left: @left;
-    right: @right;
+    .position>.top(fixed,  @index, @top, @left, @right);
   }
   .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
-    position: fixed;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
-    right: @right;
+    .position>.bottom(fixed,  @index, @bottom, @left, @right);
   }
   .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
-    position: fixed;
-    z-index: @index;
-    left: @left;
-    top: @top;
-    bottom: @bottom;
+    .position>.left(fixed, @index, @left, @top, @bottom);
   }
-  .right (@index: 1, @right: 0,@top: 0, @bottom: 0) {
-    position: fixed;
-    z-index: @index;
-    right: @right;
-    top: @top;
-    bottom: @bottom;
+  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
+    .position>.right(fixed, @right, @top, @bottom);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
-    position: fixed;
-    z-index: @index;
-    top: @top;
-    left: @left;
+    .position>.top-left(fixed, @index, @top, @left);
   }
   .top-right (@index: 1, @top: 0, @right: 0) {
-    position: fixed;
-    z-index: @index;
-    top: @top;
-    right: @right;
+    .position>.top-right(fixed, @index, @top, @right);
   }
   .bottom-left (@index: 1, @bottom: 0, @left: 0) {
-    position: fixed;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
+    .position>.bottom-left(fixed, @index, @bottom, @left);
   }
   .bottom-right (@index: 1, @bottom: 0, @right: 0) {
-    position: fixed;
-    z-index: @index;
-    bottom: @bottom;
-    right: @right;
+    .position>.bottom-right(fixed, @index, @bottom, @right);
   }
 }
 .absolute (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  position: absolute;
-  z-index: @index;
-  top: @top;
-  bottom: @bottom;
-  left: @left;
-  right: @right;
+  .position(absolute, @index, @top, @bottom, @left, @right);
   .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    position: absolute;
-    z-index: @index;
-    top: @top;
-    left: @left;
-    right: @right;
+    .position>.top(absolute,  @index, @top, @left, @right);
   }
-  .bottom (@index: 1, @bottom: 0,@left: 0, @right: 0) {
-    position: absolute;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
-    right: @right;
+  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
+    .position>.bottom(absolute,  @index, @bottom, @left, @right);
   }
-  .left (@index: 1, @left: 0,@top: 0, @bottom: 0) {
-    position: absolute;
-    z-index: @index;
-    left: @left;
-    top: @top;
-    bottom: @bottom;
+  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
+    .position>.left(absolute, @index, @left, @top, @bottom);
   }
   .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
-    position: absolute;
-    z-index: @index;
-    right: @right;
-    top: @top;
-    bottom: @bottom;
+    .position>.right(absolute, @right, @top, @bottom);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
-    position: absolute;
-    z-index: @index;
-    top: @top;
-    left: @left;
+    .position>.top-left(absolute, @index, @top, @left);
   }
   .top-right (@index: 1, @top: 0, @right: 0) {
-    position: absolute;
-    z-index: @index;
-    top: @top;
-    right: @right;
+    .position>.top-right(absolute, @index, @top, @right);
   }
   .bottom-left (@index: 1, @bottom: 0, @left: 0) {
-    position: absolute;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
+    .position>.bottom-left(absolute, @index, @bottom, @left);
   }
   .bottom-right (@index: 1, @bottom: 0, @right: 0) {
-    position: absolute;
-    z-index: @index;
-    bottom: @bottom;
-    right: @right;
+    .position>.bottom-right(absolute, @index, @bottom, @right);
   }
 }
 .relative (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  position: relative;
-  z-index: @index;
-  top: @top;
-  bottom: @bottom;
-  left: @left;
-  right: @right;
+  .position(relative, @index, @top, @bottom, @left, @right);
   .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    position: relative;
-    z-index: @index;
-    top: @top;
-    left: @left;
-    right: @right;
+    .position>.top(relative,  @index, @top, @left, @right);
   }
-  .bottom (@index: 1, @bottom: 0,@left: 0, @right: 0) {
-    position: relative;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
-    right: @right;
+  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
+    .position>.bottom(relative,  @index, @bottom, @left, @right);
   }
-  .left (@index: 1, @left: 0,@top: 0, @bottom: 0) {
-    position: relative;
-    z-index: @index;
-    left: @left;
-    top: @top;
-    bottom: @bottom;
+  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
+    .position>.left(relative, @index, @left, @top, @bottom);
   }
   .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
-    position: relative;
-    z-index: @index;
-    right: @right;
-    top: @top;
-    bottom: @bottom;
+    .position>.right(relative, @right, @top, @bottom);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
-    position: relative;
-    z-index: @index;
-    top: @top;
-    left: @left;
+    .position>.top-left(relative, @index, @top, @left);
   }
   .top-right (@index: 1, @top: 0, @right: 0) {
-    position: relative;
-    z-index: @index;
-    top: @top;
-    right: @right;
+    .position>.top-right(relative, @index, @top, @right);
   }
   .bottom-left (@index: 1, @bottom: 0, @left: 0) {
-    position: relative;
-    z-index: @index;
-    bottom: @bottom;
-    left: @left;
+    .position>.bottom-left(relative, @index, @bottom, @left);
   }
   .bottom-right (@index: 1, @bottom: 0, @right: 0) {
-    position: relative;
-    z-index: @index;
-    bottom: @bottom;
-    right: @right;
+    .position>.bottom-right(relative, @index, @bottom, @right);
   }
 }
 
 // transform
 // 矩阵
 .matrix (@a1: 0, @a2: 0, @a3: 0, @a4: 0, @a5: 0, @a6: 0) {
-  .pre(transform, matrix(@a1, @a2, @a3, @a4, @a5, @a6));
+  .tf(matrix(@a1, @a2, @a3, @a4, @a5, @a6));
   .matrix3d (@a1: 0,@a2: 0,@a3: 0,@a4: 0,@a5: 0,@a6: 0,@a7: 0,@a8: 0,@a9: 0,@a10: 0,@a11: 0,@a12: 0,@a13: 0,@a14: 0,@a15: 0,@a16: 0) {
-    .pre(transform, matrix3d(@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13, @a14, @a15, @a16));
+    .tf(matrix3d(@a1, @a2, @a3, @a4, @a5, @a6, @a7, @a8, @a9, @a10, @a11, @a12, @a13, @a14, @a15, @a16))
   }
 }
 // 平移
 .translate (@x: 0, @y: @x) {
-  .pre(transform, translate(@x, @y));
+  .tf(translate(@x, @y));
   .x (@x: 0) {
-    .pre(transform, translateX(@x));
+    .tf(translateX(@x));
   }
   .y (@y: 0) {
-    .pre(transform, translateY(@x, @y));
+    .tf(translateY(@y));
   }
   .z (@z: 0) {
-    .pre(transform, translateZ(@z));
+    .tf(translateZ(@z));
   }
   .translate3d (@x: 0, @y: 0, @z: 0) {
-    .pre(transform, translate3d(@x, @y, @z));
+    .tf(translate3d(@x, @y, @z));
   }
 }
 // 缩放
 .scale (@x: 0, @y: @x) {
-  .pre(transform, scale(@x, @y));
+  .tf(scale(@x, @y));
   .x (@x: 0) {
-    .pre(transform, scaleX(@x));
+    .tf(scaleX(@x));
   }
   .y (@y: 0) {
-    .pre(transform, scaleY(@y));
+    .tf(scaleY(@y));
   }
   .z (@z: 0) {
-    .pre(transform, scaleZ(@z));
+    .tf(scaleZ(@z));
   }
   .scale3d (@x: 0, @y: 0, @z: 0) {
-    .pre(transform, scale3d(@x, @y, @z));
+    .tf(scale3d(@x, @y, @z));
   }
 }
 // 旋转
 .rotate (@rotate: 0deg) {
-  .pre(transform, rotate(@x, @y));
-  .x (@x: 0deg) {
-    .pre(transform, rotateX(@x));
-  }
-  .y (@y: 0deg) {
-    .pre(transform, rotateY(@y));
-  }
-  .z (@z: 0deg) {
-    .pre(transform, rotateZ(@z));
-  }
+  .tf(rotate(@rotate));
   .rotate3d (@x: 0, @y: 0, @z: 0, @rotate: 0deg) {
-    .pre(transform, rotate3d(@x, @y, @z, @rotate));
+    .tf(rotate3d(@x, @y, @z, @rotate));
   }
 }
 // 倾斜
 .skew (@x: 0deg, @y: @x) {
-  .pre(transform, skew(@x, @y));
+  .tf(skew(@x, @y));
   .x (@x: 0deg) {
-    .pre(transform, skewX(@x, @y));
+    .tf(skewX(@x));
   }
   .y (@y: 0deg) {
-    .pre(transform, skewY(@y));
+    .tf(skewY(@y));
   }
 }
 
 // 滤镜
 .filter (@filter) {
-  .prew(filter, @filter);
+  .fil(@filter);
 }
 // 高斯模糊
 .blur (@blur) {
-  .prew(filter, blur(@blur));
+  .fil(blur(@blur));
 }
 // 灰度
 .grayscale (@grayscale) {
-  .prew(filter, grayscale(@grayscale))
+  .fil(grayscale(@grayscale));
 }
 // 褐色
 .sepia (@sepia) {
-  .prew(filter, sepia(@sepia));
+  .fil(sepia(@sepia));
 }
 // 饱和度
 .saturate (@saturate) {
-  .prew(filter, saturate(@saturate));
+  .fil(saturate(@saturate));
 }
 // 色相旋转
 .hue-rotate (@hue-rotate) {
-  .prew(filter, hue-rotate(@hue-rotate));
+  .fil(hue-rotate(@hue-rotate));
 }
 // 反色
 .invert (@invert) {
-  .prew(filter, invert(@invert));
+  .fil(invert(@invert));
 }
 // 透明度
 .opacity (@opacity) {
-  .prew(filter, opacity(@opacity));
+  .fil(opacity(@opacity));
 }
 // 亮度
 .brightness (@brightness) {
-  .prew(filter, brightness(@brightness));
+  .fil(brightness(@brightness));
 }
 // 对比度
 .contrast (@contrast) {
-  .prew(filter, contrast(@contrast));
+  .fil(contrast(@contrast));
 }
 // 阴影
 .drop-shadow (@x, @y, @b, @color: @c-shadow) {
-  .prew(filter, drop-shadow(@x, @y, @b, @color));
-}
-
-// 箭头
-.arrow () {
-  .top(@width: 5px, @color: @c-line) {
-    border-left: @width solid @c-t;
-    border-right: @width solid @c-t;
-    border-bottom: @width solid @color;
-  }
-  .bottom(@width: 5px, @color: @c-line) {
-    border-left: @width solid @c-t;
-    border-right: @width solid @c-t;
-    border-top: @width solid @color;
-  }
-  .left(@width: 5px, @color: @c-line) {
-    border-top: @width solid @c-t;
-    border-bottom: @width solid @c-t;
-    border-right: @width solid @color;
-  }
-  .right(@width: 5px, @color: @c-line) {
-    border-top: @width solid @c-t;
-    border-bottom: @width solid @c-t;
-    border-left: @width solid @color;
-  }
-  .top-left(@width: 5px, @color: @c-line) {
-    border-bottom: @width solid @c-t;
-    border-left: @width solid @color;
-  }
-  .top-right(@width: 5px, @color: @c-line) {
-    border-bottom: @width solid @c-t;
-    border-right: @width solid @color;
-  }
-  .bottom-left(@width: 5px, @color: @c-line) {
-    border-top: @width solid @c-t;
-    border-left: @width solid @color;
-  }
-  .bottom-right(@width: 5px, @color: @c-line) {
-    border-top: @width solid @c-t;
-    border-right: @width solid @color;
-  }
-}
-
-// 文本隐藏
-.font-hidden () {
-  .wrap () {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-  }
-  .nowrap () {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-// 动画
-.animation (@animation) {
-  .pre(animation, @animation);
-}
-// @duration: 持续时间,  @delay: 延迟播放, @iteration: 播放次数(infinite: 无限次播放)
-.animation-state (@duration, @delay: 0s, @iteration: infinite) {
-  .pre(animation-duration, @duration);
-  .pre(animation-delay, @delay);
-  .pre(animation-iteration-count, @iteration);
-}
-
-// 处理前缀
-.pre (@style, @value) {
-  -webkit-@{style}: @value;
-  -moz-@{style}: @value;
-  -ms-@{style}: @value;
-  -o-@{style}: @value;
-  @{style}: @value;
-}
-.prew (@style, @value) {
-  -webkit-@{style}: @value;
-  @{style}: @value;
-}
-.prewm (@style, @value) {
-  -webkit-@{style}: @value;
-  -ms-@{style}: @value;
-}
-
-// 弹性盒子
-.flex () {
-  display: -webkit-flex;
-  display: flex;
-  .box () {
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-  }
-}
-.flex-direction (@value: row) {
-  .prew(flex-direction, @value);
-  .rew () {
-    .prewm(box-direction, normal);
-    .prewm(box-orient, horizontal);
-    .prew(flex-direction, row);
-  }
-  .row-r () {
-    .prewm(box-direction, reverse);
-    .prewm(box-orient, horizontal);
-    .prew(flex-direction, row-reverse);
-  }
-  .column () {
-    .prewm(box-direction, normal);
-    .prewm(box-orient, vertical);
-    .prew(flex-direction, column);
-  }
-  .column-r () {
-    .prewm(box-direction, reverse);
-    .prewm(box-orient, vertical);
-    .prew(flex-direction, column-reverse);
-  }
-}
-.flex-wrap (@value: nowrap) {
-  .pre(flex-wrap, @value);
-  .nowrap () {
-    -webkit-box-lines: single;
-    .prew(flex-wrap, nowrap);
-  }
-  .wrap () {
-    -webkit-box-lines: multiple;
-    .prew(flex-wrap, wrap);
-  }
-  .wrap-r () {
-    .prewm(box-direction, reverse);
-    .prewm(box-orient, vertical);
-    -webkit-box-lines: multiple;
-    .prew(flex-wrap, wrap-reverse);
-  }
-}
-.justify-content (@value: flex-start) {
-  .pre(justify-content, @value);
-  .start () {
-    .prewm(box-pack, start);
-    .prew(justify-content, flex-start);
-  }
-  .end () {
-    .prewm(box-pack, end);
-    .prew(justify-content, flex-end);
-  }
-  .center () {
-    .prewm(box-pack, center);
-    .prew(justify-content, center);
-  }
-  .between () {
-    .prewm(box-pack, justify);
-    .prew(justify-content, space-between);
-  }
-  .around () {
-    .prewm(box-pack, justify);
-    .prew(justify-content, space-around);
-  }
-}
-.align-items (@value: stretch) {
-  .pre(align-items, @value);
-  .stretch () {
-    .prewm(align-items, stretch);
-    .prew(align-items, stretch);
-  }
-  .flex-start () {
-    .prewm(align-items, start);
-    .prew(align-items, flex-start);
-  }
-  .flex-end () {
-    .prewm(align-items, end);
-    .prew(align-items, flex-end);
-  }
-  .center () {
-    .prewm(align-items, center);
-    .prew(align-items, center);
-  }
-  .baseline () {
-    .prewm(align-items, baseline);
-    .prew(align-items, baseline);
-  }
-}
-.align-content (@value: stretch) {
-  .prew(align-content, @value);
+  .fil(drop-shadow(@x, @y, @b, @color));
 }

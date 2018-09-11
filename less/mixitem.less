@@ -1,0 +1,109 @@
+@import "alias";
+@import "color";
+
+.pos-r () {
+  .pos(relative);
+}
+.d-ibt () {
+  .d(inline-block);
+  .va(top);
+}
+.d-ibm () {
+  .d(inline-block);
+  .va(middle);
+}
+// 箭头
+.arrow () {
+  .top(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdl(@width, @c-t);
+    .bdr(@width, @c-t);
+    .bdb(@width, @color);
+  }
+  .bottom(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdl(@width, @c-t);
+    .bdr(@width, @c-t);
+    .bdt(@width, @color);
+  }
+  .left(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdt(@width, @c-t);
+    .bdb(@width, @c-t);
+    .bdr(@width, @color);
+  }
+  .right(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdt(@width, @c-t);
+    .bdb(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .top-left(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdb(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .top-right(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdb(@width, @c-t);
+    .bdr(@width, @color);
+  }
+  .bottom-left(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdt(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .bottom-right(@width: 5px, @color: @c-line) {
+    .w(0);
+    .h(0);
+    .bdt(@width, @c-t);
+    .bdr(@width, @color);
+  }
+}
+// 文本隐藏
+.font-hidden () {
+  .wrap () {
+    .of(hidden);
+    .to(ellipsis);
+    .ws(normal);
+  }
+  .nowrap () {
+    .of(hidden);
+    .to(ellipsis);
+    .ws(nowrap);
+  }
+}
+// 动画 @duration: 持续时间,  @delay: 延迟播放, @count: 播放次数(infinite: 无限次播放)
+.animation (@name, @duration, @delay: 0s, @count: infinite) {
+  .ann(@name);
+  .andur(@duration);
+  .andel(@delay);
+  .anc(@count);
+}
+.animation-state (@duration, @delay: 0s, @count: infinite) {
+  .andur(@duration);
+  .andel(@delay);
+  .anc(@count);
+}
+.transition (@property, @duration, @delay: 0s) {
+  .tsp(@property);
+  .tsdur(@duration);
+  .tsdel(@delay);
+}
+// 隐藏数字输入框右边箭头
+.number-hidden () {
+  input[type="number"] {
+    appearance: textfield;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+  }
+}

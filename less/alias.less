@@ -1,0 +1,275 @@
+@import "color";
+
+.w (@w) {
+  width: @w;
+}
+.h (@h) {
+  height: @h;
+}
+.minw (@w) {
+  min-width: @w;
+}
+.minh (@h) {
+  min-height: @h;
+}
+.maxw (@w) {
+  max-width: @w;
+}
+.maxh (@h) {
+  max-height: @h;
+}
+.bs (@x, @y, @b, @c: @c-shadow) {
+  box-shadow: @x @y @b @c;
+}
+.bd (@w, @c: @c-line, @s: solid) {
+  border: @w @s @c;
+}
+.bdt (@w, @c: @c-line, @s: solid) {
+  border-top: @w @s @c;
+}
+.bdb (@w, @c: @c-line, @s: solid) {
+  border-bottom: @w @s @c;
+}
+.bdl (@w, @c: @c-line, @s: solid) {
+  border-left: @w @s @c;
+}
+.bdr (@w, @c: @c-line, @s: solid) {
+  border-right: @w @s @c;
+}
+.br (...) {
+  border-radius: @arguments;
+}
+
+.fs (@s) {
+  font-size: @s;
+}
+.c (@c) {
+  color: @c;
+}
+.ff (@f) {
+  font-family: @f;
+}
+.ti (@i) {
+  text-indent: @i;
+}
+.ta (@a) {
+  text-align: @a;
+}
+.lh (@h) {
+  line-height: @h;
+}
+.fw (@w) {
+  font-weight: @w;
+}
+.ts (@x, @y, @b, @c: @c-shadow) {
+  text-shadow: @x @y @b @c;
+}
+.tso (@w, @c) {
+  .prew(text-stroke, @w @c);
+}
+.td (@d) {
+  text-decoration: @d;
+}
+.to (@o) {
+  text-overflow: @o;
+}
+.ws (@s) {
+  white-space: @s;
+}
+
+.m (...) {
+  margin: @arguments;
+}
+.mt (@m) {
+  margin-top: @m;
+}
+.mb (@m) {
+  margin-bottom: @m;
+}
+.ml (@m) {
+  margin-left: @m;
+}
+.mr (@m) {
+  margin-right: @m;
+}
+
+.p (...) {
+  padding: @arguments;
+}
+.pt (@p) {
+  padding-top: @p;
+}
+.pb (@p) {
+  padding-bottom: @p;
+}
+.pl (@p) {
+  padding-left: @p;
+}
+.pr (@p) {
+  padding-right: @p;
+}
+
+.d (@d) {
+  display: @d;
+}
+.va (@a) {
+  vertical-align: @a;
+}
+.of (@f) {
+  overflow: @f;
+}
+
+.fxd (@d) {
+  flex-direction: @d;
+}
+.fxw (@w) {
+  flex-wrap: @w;
+}
+.fxf (@f) {
+  flex-flow: @f;
+}
+.jc (@c) {
+  justify-content: @c;
+}
+.ai (@i) {
+  align-items: @i;
+}
+.ac (@c) {
+  align-content: @c;
+}
+.ord (@ord) {
+  order: @ord;
+}
+.fxg (@g) {
+  flex-grow: @g;
+}
+.fxs (@s) {
+  flex-shrink: @s;
+}
+.fxb (@b) {
+  flex-basis: @b;
+}
+.fx (...) {
+  flex: @arguments;
+}
+.as (@s) {
+  align-self: @s;
+}
+
+.pos (@p) {
+  position: @p;
+}
+.zi (@i) {
+  z-index: @i;
+}
+.t (@t) {
+  top: @t;
+}
+.b (@b) {
+  bottom: @b;
+}
+.l (@l) {
+  left: @l;
+}
+.r (@r) {
+  right: @r;
+}
+
+.bgc (@c) {
+  background-color: @c;
+}
+.bgi (@i) {
+  background-image: url(@i);
+}
+.bgp (@x, @y: @x) {
+  background-position: @x @y;
+}
+.bgs (@w, @h: @w) {
+  background-size: @w @h;
+}
+.bgr (@x, @y: @x) {
+  background-repeat: @x @y;
+}
+.bga (@a) {
+  background-attachment: @a;
+}
+.bgo (@o) {
+  background-origin: @o;
+}
+.bgcl (@c) {
+  background-clip: @c;
+}
+
+.tf (...) {
+  transform: @arguments;
+}
+.fil (...) {
+  .prew(filter, @arguments);
+}
+
+.an (...) {
+  animation: @arguments;
+}
+.ann (@n) {
+  animation-name: @n;
+}
+.andur (@d) {
+  animation-duration: @d;
+}
+.andel (@d) {
+  animation-delay: @d;
+}
+.andir (@d) {
+  animation-direction: @d;
+}
+.anc (@c) {
+  animation-iteration-count: @c;
+}
+.antf (@tf) {
+  animation-timing-function: @tf;
+}
+.ts (...) {
+  transition: @arguments;
+}
+.tsp (@p: transform) {
+  transition-property: @p;
+}
+.tsdur (@dur) {
+  transition-duration: @dur;
+}
+.tsdel (@del) {
+  transition-delay: @del;
+}
+.tstf (@tf) {
+  transition-timing-function: @tf;
+}
+
+.op (@p) {
+  opacity: @p;
+}
+.cur (@r) {
+  cursor: @r;
+}
+.con (@c) {
+  content: @c;
+}
+.us (@s) {
+  .prew(user-select, @s);
+}
+
+// 处理前缀
+.pre (@style, @value) {
+  -webkit-@{style}: @value;
+  -moz-@{style}: @value;
+  -ms-@{style}: @value;
+  -o-@{style}: @value;
+  @{style}: @value;
+}
+.prew (@style, @value) {
+  -webkit-@{style}: @value;
+  @{style}: @value;
+}
+.prewm (@style, @value) {
+  -webkit-@{style}: @value;
+  -ms-@{style}: @value;
+}

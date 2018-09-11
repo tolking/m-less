@@ -1,81 +1,80 @@
-@import "mixins";
+@import "alias";
 
 // .flex-test {
-//   .flex;
-//   .flex-direction(row);
-//   .flex-wrap(nowrap);
-//   .justify-content(flex-start);
-//   .align-items(center);
-//   .align-content(stretch);
+//   .d(flex);
+//   .fxd(row);
+//   .fxw(nowrap);
+//   .jc(flex-start);
+//   .ai(stretch);
+//   .ac(stretch);
 // }
 // 水平单列向下排列
 .flex-c {
-  .flex>.box;
-  .flex-direction>.column;
+  .d(flex);
+  .fxd(column);
 }
 // 水平单列向下排列、排满向右换列
 .flex-cw {
-  .flex>.box;
-  .flex-direction>.column;
-  .flex-wrap>.wrap;
+  .d(flex);
+  .fxd(column);
+  .fxw(wrap);
 }
 // 水平靠左排满换行
 .flex-w {
-  .flex>.box;
-  .flex-wrap>.wrap;
+  .d(flex);
+  .fxw(wrap);
 }
 // 水平单行居中、垂直居中
 .flex-cc {
-  .flex>.box;
-  .justify-content>.center;
-  .align-items>.center;
+  .d(flex);
+  .jc(center);
+  .ai(center);
 }
 // 水平单列向下换行、垂直居中
 .flex-ccc {
-  .flex>.box;
-  .flex-direction>.column;
-  .justify-content>.center;
-  .align-items>.center;
+  .d(flex);
+  .fxd(column);
+  .jc(center);
+  .ai(center);
 }
-// 水平单行靠两边
+// 水平单行靠两边、不换行
 .flex-b {
-  .flex>.box;
-  .justify-content>.between;
+  .d(flex);
+  .jc(space-between);
 }
 // 水平单行靠两边、垂直居中
 .flex-bc {
-  .flex>.box;
-  .justify-content>.between;
-  .align-items>.center;
+  .d(flex);
+  .jc(space-between);
+  .ai(center);
 }
 // 水平单行平均间隙、垂直居中
 .flex-ac {
-  .flex>.box;
-  .justify-content>.around;
-  .align-items>.center;
+  .d(flex);
+  .jc(space-around);
+  .ai(center);
 }
 // 水平靠两边、排满向下换行
 .flex-wb {
-  .flex>.box;
-  .flex-wrap>.wrap;
-  .justify-content>.between;
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-between);
 }
 // 水平靠两边、排满向下换行、垂直居中
 .flex-wbs {
-  .flex>.box;
-  .flex-wrap>.wrap;
-  .justify-content>.between;
-  .align-content(space-between);
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-between);
+  .ac(space-between);
 }
 // 水平单列向下换行、垂直靠两边
 .flex-cbc {
-  .flex>.box;
-  .flex-direction>.column;
-  .justify-content>.between;
-  .align-items>.center;
+  .d(flex);
+  .fxd(column);
+  .jc(space-between);
+  .ai(center);
 }
 // 向左排列、配合定位使用
 .reverse {
-  .flex-direction>.row-r;
-  .flex-wrap>.wrap-r;
+  .fxd(row-reverse);
 }
