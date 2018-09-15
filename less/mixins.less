@@ -25,10 +25,10 @@
     .maxw(@width);
     .maxh(@height);
   }
-  .shadow (@x, @y, @b, @color: @c-shadow) {
+  .shadow (@x: 0, @y: 1px, @b: 6px, @color: @c-shadow) {
     .bs(@x, @y, @b, @color);
   }
-  .shadow (@x, @y, @b, @color, @width, @height: auto) {
+  .shadow (@x: 0, @y: 1px, @b: 6px, @color, @width, @height: auto) {
     .box(@width, @height);
     .bs(@x, @y, @b, @color);
   }
@@ -76,17 +76,6 @@
   }
 }
 
-// 背景
-.bg (...) {
-  background: @arguments;
-}
-.imgbg (@url) {
-  .bgi(@url);
-  .bgr(no-repeat);
-  .bgp(center);
-  .bgs(100%);
-}
-
 // 字体
 .font (@size: 1rem, @color: @c-text) {
   .fs(@size);
@@ -128,87 +117,92 @@
     .fw(@weight);
     .tso(@stroke-weight, @stroke-color);
   }
+  .style (@style) {
+    font-style: @style;
+  }
+  .style (@style, @size, @color: @c-text) {
+    .font(@size, @color);
+    font-style: @style;
+  }
 }
 .font (@size, @color, @family) {
   .fs(@size);
   .c(@color);
   .ff(@family);
 }
+// 文本分列
+.column (@count, @gap, @width: 1px, @color: @c-line, @style: solid) {
+  .cc(@count);
+  .cg(@gap);
+  .cr(@width, @color, @style);
+}
 
 // 定位
-.position (@p: absolute, @index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
+.position (@p: absolute, @index: 1, @top: 0, @right: @top, @bottom: @top, @left: @right) {
   .pos(@p);
-  .zi(@index);
   .t(@top);
   .b(@bottom);
   .l(@left);
   .r(@right);
-  .top (@p, @index: 1, @top: 0, @left: 0, @right: 0) {
+  .zi(@index);
+  .top (@p, @index: 1, @top: 0) {
     .pos(@p);
-    .zi(@index);
     .t(@top);
-    .l(@left);
-    .r(@right);
-  }
-  .bottom (@p, @index: 1, @bottom: 0, @left: 0, @right: 0) {
-    .pos(@p);
     .zi(@index);
-    .b(@bottom);
-    .l(@left);
-    .r(@right);
   }
-  .left (@p, @index: 1, @left: 0, @top: 0, @bottom: 0) {
+  .bottom (@p, @index: 1, @bottom: 0) {
     .pos(@p);
-    .zi(@index);
-    .t(@top);
     .b(@bottom);
-    .l(@left);
+    .zi(@index);
   }
-  .right (@p, @index: 1, @right: 0,@top: 0, @bottom: 0) {
+  .left (@p, @index: 1, @left: 0) {
     .pos(@p);
+    .l(@left);
     .zi(@index);
-    .t(@top);
-    .b(@bottom);
+  }
+  .right (@p, @index: 1, @right: 0) {
+    .pos(@p);
     .r(@right);
+    .zi(@index);
   }
   .top-left (@p, @index: 1, @top: 0, @left: 0) {
     .pos(@p);
-    .zi(@index);
     .t(@top);
     .l(@left);
+    .zi(@index);
   }
   .top-right (@p, @index: 1, @top: 0, @right: 0) {
     .pos(@p);
-    .zi(@index);
     .t(@top);
     .r(@right);
+    .zi(@index);
   }
   .bottom-left (@p, @index: 1, @bottom: 0, @left: 0) {
     .pos(@p);
-    .zi(@index);
     .b(@bottom);
     .l(@left);
+    .zi(@index);
   }
   .bottom-right (@p, @index: 1, @bottom: 0, @right: 0) {
     .pos(@p);
-    .zi(@index);
     .b(@bottom);
     .r(@right);
+    .zi(@index);
   }
 }
-.fixed (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  .position(fixed, @index, @top, @bottom, @left, @right);
-  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    .position>.top(fixed,  @index, @top, @left, @right);
+.fixed (@index: 1, @top: 0, @right: @top, @bottom: @top, @left: @right) {
+  .position(fixed, @index, @top, @right, @bottom, @left);
+  .top (@index: 1, @top: 0) {
+    .position>.top(fixed,  @index, @top);
   }
-  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
-    .position>.bottom(fixed,  @index, @bottom, @left, @right);
+  .bottom (@index: 1, @bottom: 0) {
+    .position>.bottom(fixed,  @index, @bottom);
   }
-  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
-    .position>.left(fixed, @index, @left, @top, @bottom);
+  .left (@index: 1, @left: 0) {
+    .position>.left(fixed, @index, @left);
   }
-  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
-    .position>.right(fixed, @right, @top, @bottom);
+  .right (@index: 1, @right: 0) {
+    .position>.right(fixed, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(fixed, @index, @top, @left);
@@ -223,19 +217,19 @@
     .position>.bottom-right(fixed, @index, @bottom, @right);
   }
 }
-.absolute (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  .position(absolute, @index, @top, @bottom, @left, @right);
-  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    .position>.top(absolute,  @index, @top, @left, @right);
+.absolute (@index: 1, @top: 0, @right: @top, @bottom: @top, @left: @right) {
+  .position(absolute, @index, @top, @right, @bottom, @left);
+  .top (@index: 1, @top: 0) {
+    .position>.top(absolute,  @index, @top);
   }
-  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
-    .position>.bottom(absolute,  @index, @bottom, @left, @right);
+  .bottom (@index: 1, @bottom: 0) {
+    .position>.bottom(absolute,  @index, @bottom);
   }
-  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
-    .position>.left(absolute, @index, @left, @top, @bottom);
+  .left (@index: 1, @left: 0) {
+    .position>.left(absolute, @index, @left);
   }
-  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
-    .position>.right(absolute, @right, @top, @bottom);
+  .right (@index: 1, @right: 0) {
+    .position>.right(absolute, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(absolute, @index, @top, @left);
@@ -250,19 +244,19 @@
     .position>.bottom-right(absolute, @index, @bottom, @right);
   }
 }
-.relative (@index: 1, @top: 0, @bottom: 0, @left: 0, @right: 0) {
-  .position(relative, @index, @top, @bottom, @left, @right);
-  .top (@index: 1, @top: 0, @left: 0, @right: 0) {
-    .position>.top(relative,  @index, @top, @left, @right);
+.relative (@index: 1, @top: 0, @right: @top, @bottom: @top, @left: @right) {
+  .position(relative, @index, @top, @right, @bottom, @left);
+  .top (@index: 1, @top: 0) {
+    .position>.top(relative,  @index, @top);
   }
-  .bottom (@index: 1, @bottom: 0, @left: 0, @right: 0) {
-    .position>.bottom(relative,  @index, @bottom, @left, @right);
+  .bottom (@index: 1, @bottom: 0) {
+    .position>.bottom(relative,  @index, @bottom);
   }
-  .left (@index: 1, @left: 0, @top: 0, @bottom: 0) {
-    .position>.left(relative, @index, @left, @top, @bottom);
+  .left (@index: 1, @left: 0) {
+    .position>.left(relative, @index, @left);
   }
-  .right (@index: 1, @right: 0, @top: 0, @bottom: 0) {
-    .position>.right(relative, @right, @top, @bottom);
+  .right (@index: 1, @right: 0) {
+    .position>.right(relative, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(relative, @index, @top, @left);
@@ -333,6 +327,142 @@
   }
   .y (@y: 0deg) {
     .tf(skewY(@y));
+  }
+}
+
+// 背景
+.bg-img (@url, @r: no-repeat, @p: center, @s: 100%) {
+  .bgi(url(@url));
+  .bgr(@r);
+  .bgp(@p);
+  .bgs(@s);
+}
+.bg-line (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: 90deg) {
+  .bg(@e-c, linear-gradient(@r, @s-c, @e-c));
+}
+.bg-line (@s-c, @c2, @e-c, @r: 90deg) {
+  .bg(@e-c, linear-gradient(@r, @s-c, @c2, @e-c));
+}
+.bg-line (@s-c, @c2, @c3, @e-c, @r: 90deg) {
+  .bg(@e-c, linear-gradient(@r, @s-c, @c2, @c3, @e-c));
+}
+.bg-line-rainbow (@r: 90deg) {
+  .bg(linear-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
+}
+.bg-radial (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: circle) {
+  .bg(@e-c, radial-gradient(@r, @s-c, @e-c));
+}
+.bg-radial (@s-c, @c2, @e-c, @r: circle) {
+  .bg(@s-c, radial-gradient(@r, @s-c, @c2, @e-c));
+}
+.bg-radial (@s-c, @c2, @c3, @e-c, @r: circle) {
+  .bg(@s-c, radial-gradient(@r, @s-c, @c2, @c3, @e-c));
+}
+.bg-radial-rainbow (@r: circle) {
+  .bg(radial-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
+}
+
+// 镜像效果
+.reflect (@l: 0px, @opacity: 0.3, @length: 70%){
+  .bref(below @l linear-gradient(0deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
+  .above (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .bref(above @l linear-gradient(180deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
+  }
+  .top (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .reflect>.above(@l, @opacity, @length);
+  }
+  .below (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .bref(below @l linear-gradient(0deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
+  }
+  .bottom (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .reflect>.below(@l, @opacity, @length);
+  }
+  .left (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .bref(left @l linear-gradient(90deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
+  }
+  .right (@l: 0px, @opacity: 0.3, @length: 70%) {
+    .bref(right @l linear-gradient(270deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
+  }
+}
+
+// 按钮
+.btn (@w, @h: @w, @r: 0, @c: @c-btn, @time: 1s, @d: 5%, @l: 70%) {
+  .pos-r;
+  .of-h;
+  .box>.radius(@r, @w, @h);
+  .bgc(@c);
+  .font-cc(@h);
+  .cur-p;
+  .transition(all, @time);
+  &:after {
+    content: "";
+    .absolute;
+    .d-b;
+    .box(@w, @h);
+    .bg-radial(lighten(@c, @l) 10%, @c-t 11%);
+    .bgr(no-repeat);
+    .bgp(50%);
+    .op(0);
+    .scale(10);
+    pointer-events: none;
+    .transition(all, @time);
+  }
+  &:hover {
+    .bgc(darken(@c, @d));
+    .transition(all, @time);
+  }
+  &:active:after {
+    .op(0.4);
+    .scale(0);
+    .transition(all, 0s);
+  }
+}
+
+// 箭头
+.arrow () {
+  .top(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdl(@width, @c-t);
+    .bdr(@width, @c-t);
+    .bdb(@width, @color);
+  }
+  .bottom(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdl(@width, @c-t);
+    .bdr(@width, @c-t);
+    .bdt(@width, @color);
+  }
+  .left(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdt(@width, @c-t);
+    .bdb(@width, @c-t);
+    .bdr(@width, @color);
+  }
+  .right(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdt(@width, @c-t);
+    .bdb(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .top-left(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdb(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .top-right(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdb(@width, @c-t);
+    .bdr(@width, @color);
+  }
+  .bottom-left(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdt(@width, @c-t);
+    .bdl(@width, @color);
+  }
+  .bottom-right(@width: 5px, @color: @c-line) {
+    .box(0, 0);
+    .bdt(@width, @c-t);
+    .bdr(@width, @color);
   }
 }
 

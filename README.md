@@ -1,16 +1,155 @@
 # m-less
 
-## 自用的less文件，结合webpack更好的使用
-## 组件开发
+[所有参数介绍](https://less.ououe.com)  // 编辑、整理中 wait
 
+## 自用的less文件
+```html
+<div class="btn">btn</div>
+```
+```less
+.btn {
+  .m(1rem);
+  .btn(5rem, 2rem, 0.5rem, @c-blue);
+  .box>.shadow;
+  .font(1rem, @c-white);
+}
+```
+#### 效果如下
+<style>
+.btn {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: #0074D9;
+  text-align: center;
+  line-height: 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  box-shadow: 0 1px 6px rgba(17, 17, 17, 0.3);
+  font-size: 1rem;
+  color: #FFFFFF;
+}
+.btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 5rem;
+  height: 2rem;
+  background: transparent 11% radial-gradient(circle, #ffffff 10%, transparent 11%);
+  background-repeat: no-repeat no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+  transform: scale(10, 10);
+  pointer-events: none;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+.btn:hover {
+  background-color: #0066c0;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+.btn:active:after {
+  opacity: 0.4;
+  transform: scale(0, 0);
+  transition-property: all;
+  transition-duration: 0s;
+  transition-delay: 0s;
+}
+</style>
+<div class="btn">btn</div>
+
+#### 编译后 css
+```css
+.btn {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background-color: #0074D9;
+  text-align: center;
+  line-height: 2rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+  box-shadow: 0 1px 6px rgba(17, 17, 17, 0.3);
+  font-size: 1rem;
+  color: #FFFFFF;
+}
+.btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 5rem;
+  height: 2rem;
+  background: transparent 11% radial-gradient(circle, #ffffff 10%, transparent 11%);
+  background-repeat: no-repeat no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+  transform: scale(10, 10);
+  pointer-events: none;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+.btn:hover {
+  background-color: #0066c0;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-delay: 0s;
+}
+.btn:active:after {
+  opacity: 0.4;
+  transform: scale(0, 0);
+  transition-property: all;
+  transition-duration: 0s;
+  transition-delay: 0s;
+}
+```
+
+## 简介
+### 结构包含 常用属性简写、常用的 mixins、常用的 flex 类名、颜色及字体定义、清除浏览器默认样式
+### 默认只对少数几个属性进行了前缀处理，结合 postcss Autoprefixer 更好的处理前缀兼容
+[所有参数介绍](https://less.ououe.com)  // 编辑、整理中 wait
+
+## 组件开发（以vue为例）
 1. 在项目 main.js 中引入 styles.less
 ```js
 import "./less/styles.less";
 ```
 
-2. 在需要使用 mixins 的地方引入 mixins.less
-```css
-@import "./less/mixins";
+2. 在需要使用 mixins 的单文件引入 mixins.less
+```html vue
+<style lang="less" scoped>
+/* 注意相对路径 */
+@import url(../less/mixins);
+
+/* 开始使用 */
+</style>
 ```
 
 ## 静态页面开发
@@ -37,68 +176,5 @@ import "./less/styles.less";
 ```
 
 2. 生产时将 less 编译为 css
-+ node 使用 lessc styles.less styles.css 编译 less 为 css
-+ 屏蔽上面开发代码，引入 styles.css
-
-## 简介
-
-1. styles.less 样式入口文件（必须）
-- 在项目中引入，或者引入其它less文件
-- 定义了默认字体
-- 设置 html font-size 为 20px 方便使用 rem
-
-2. mixins.less  Mixin入口文件（必须）
-[具体的参数详解](https://ououe.com) 搭建中。。。。
-- 里面整合了一些常用的样式混合
-- 在需要使用的地方引用
-```css
-@import url("./less/mixins");
-
-.test {
-  .box>.radius(50%, 5rem);
-}
-
-// 编译后
-.test {
-  width: 5rem;
-  height: 5rem;
-  border-radius: 50%;
-}
-```
-
-3. base.less  去除浏览器的默认样式（建议）
-- 去除浏览器的默认样式，减小浏览器之间的差距
-
-4. flex.less  弹性盒子样式（可选）
-[具体的参数详解](https://ououe.com) 搭建中。。。。
-- 收录一些我常用的弹性盒子样式
-- flex仅支持 ie11 及以上版本浏览器，注意你的项目是否允许你使用
-- 直接在需要的 class 里面加类名就行了
-```html
-<div class="flex-cc">
-  <p>center center</p>
-</div>
-```
-
-5. color.less  整体颜色（建议）
-- 方便管理整体网站的配色
-- 里面写整体网站的颜色信息
-- 提供一些默认颜色
-- 部分颜色是必须项，可以改颜色，去掉会报错
-```css
-@import url("./less/mixins");
-
-.test {
-  .font>.weight(800, 1rem, @c-text);
-}
-
-// 编译后
-.test {
-  font-size: 1rem;
-  color: #666;
-  font-weight: 800;
-}
-```
-
-6. family.less  字体文件
-- 方便管理网站整体的文字字体样式
+- node 使用 lessc styles.less styles.css 编译 less 为 css
+- 屏蔽上面开发代码，引入 styles.css

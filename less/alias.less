@@ -18,8 +18,11 @@
 .maxh (@h) {
   max-height: @h;
 }
-.bs (@x, @y, @b, @c: @c-shadow) {
-  box-shadow: @x @y @b @c;
+.bs (@x: 0, @y: 1px, @b: 6px, @c: @c-shadow, ...) {
+  box-shadow: @arguments;
+  .inset (@x: 0, @y: 1px, @b: 6px, @c: @c-shadow) {
+    .bs(@x, @y, @b, @c, inset);
+  }
 }
 .bd (@w, @c: @c-line, @s: solid) {
   border: @w @s @c;
@@ -36,8 +39,24 @@
 .bdr (@w, @c: @c-line, @s: solid) {
   border-right: @w @s @c;
 }
+.bdi (...) {
+  border-image: @arguments;
+}
 .br (...) {
   border-radius: @arguments;
+}
+.bsiz (@s) {
+  box-sizing: @s;
+}
+.oo (@o) {
+  outline-offset: @o;
+}
+.bref (...) {
+  .prew(box-reflect, @arguments);
+}
+
+.res (@s) {
+  resize: @s;
 }
 
 .fs (@s) {
@@ -75,6 +94,19 @@
 }
 .ws (@s) {
   white-space: @s;
+}
+.fsty (@s) {
+  font-style: @s;
+}
+
+.cc (@c) {
+  column-count: @c;
+}
+.cg (@g) {
+  column-gap: @g;
+}
+.cr (@w: 1px, @c: @c-line, @s: solid) {
+  column-rule: @arguments;
 }
 
 .m (...) {
@@ -115,8 +147,11 @@
 .va (@a) {
   vertical-align: @a;
 }
-.of (@f) {
-  overflow: @f;
+.v (@v) {
+  visibility: @v;
+}
+.of (...) {
+  overflow: @arguments;
 }
 
 .fxd (@d) {
@@ -175,11 +210,14 @@
   right: @r;
 }
 
+.bg (...) {
+  background: @arguments;
+}
 .bgc (@c) {
   background-color: @c;
 }
 .bgi (@i) {
-  background-image: url(@i);
+  background-image: @i;
 }
 .bgp (@x, @y: @x) {
   background-position: @x @y;
@@ -197,11 +235,14 @@
   background-origin: @o;
 }
 .bgcl (@c) {
-  background-clip: @c;
+  .prew(background-clip, @c);
 }
 
 .tf (...) {
   transform: @arguments;
+}
+.tfo (...) {
+  transform-origin: @arguments;
 }
 .fil (...) {
   .prew(filter, @arguments);
