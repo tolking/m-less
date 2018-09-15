@@ -3,9 +3,11 @@
 [所有参数介绍](https://less.ououe.com)  // 编辑、整理中 wait
 
 ## 自用的less文件
+
 ```html
 <div class="btn">btn</div>
 ```
+#### less 内容
 ```less
 .btn {
   .m(1rem);
@@ -14,65 +16,6 @@
   .font(1rem, @c-white);
 }
 ```
-#### 效果如下
-<style>
-.btn {
-  margin: 1rem;
-  position: relative;
-  overflow: hidden;
-  width: 5rem;
-  height: 2rem;
-  border-radius: 0.5rem;
-  background-color: #0074D9;
-  text-align: center;
-  line-height: 2rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-  transition-property: all;
-  transition-duration: 1s;
-  transition-delay: 0s;
-  box-shadow: 0 1px 6px rgba(17, 17, 17, 0.3);
-  font-size: 1rem;
-  color: #FFFFFF;
-}
-.btn:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  display: block;
-  width: 5rem;
-  height: 2rem;
-  background: transparent 11% radial-gradient(circle, #ffffff 10%, transparent 11%);
-  background-repeat: no-repeat no-repeat;
-  background-position: 50% 50%;
-  opacity: 0;
-  transform: scale(10, 10);
-  pointer-events: none;
-  transition-property: all;
-  transition-duration: 1s;
-  transition-delay: 0s;
-}
-.btn:hover {
-  background-color: #0066c0;
-  transition-property: all;
-  transition-duration: 1s;
-  transition-delay: 0s;
-}
-.btn:active:after {
-  opacity: 0.4;
-  transform: scale(0, 0);
-  transition-property: all;
-  transition-duration: 0s;
-  transition-delay: 0s;
-}
-</style>
-<div class="btn">btn</div>
-
 #### 编译后 css
 ```css
 .btn {
@@ -132,7 +75,7 @@
 ```
 
 ## 简介
-### 结构包含 常用属性简写、常用的 mixins、常用的 flex 类名、颜色及字体定义、清除浏览器默认样式
+### 结构包含 常用属性简写、常用的 mixins、常用的 flex 类名、颜色及字体定义、清除浏览器默认样式
 ### 默认只对少数几个属性进行了前缀处理，结合 postcss Autoprefixer 更好的处理前缀兼容
 [所有参数介绍](https://less.ououe.com)  // 编辑、整理中 wait
 
