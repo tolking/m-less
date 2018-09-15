@@ -97,14 +97,14 @@
   .weight (@weight: normal) {
     .fw(@weight);
   }
-  .weight (@weight, @size, @color: @c-text) {
+  .weight (@weight: normal, @size, @color: @c-text) {
     .font(@size, @color);
     .fw(@weight);
   }
-  .shadow (@x, @y, @b, @shadow-color: @c-shadow) {
+  .shadow (@x: 0, @y: 1px, @b: 4px, @shadow-color: @c-shadow) {
     .ts(@x, @y, @b, @shadow-color);
   }
-  .shadow (@x, @y, @b, @shadow-color, @size, @color: @c-text) {
+  .shadow (@x: 0, @y: 1px, @b: 4px, @shadow-color: @c-shadow, @size, @color: @c-text) {
     .font(@size, @color);
     .ts(@x, @y, @b, @shadow-color);
   }
@@ -117,10 +117,10 @@
     .fw(@weight);
     .tso(@stroke-weight, @stroke-color);
   }
-  .style (@style) {
+  .style (@style: italic) {
     font-style: @style;
   }
-  .style (@style, @size, @color: @c-text) {
+  .style (@style: italic, @size, @color: @c-text) {
     .font(@size, @color);
     font-style: @style;
   }
@@ -129,6 +129,23 @@
   .fs(@size);
   .c(@color);
   .ff(@family);
+}
+.font-cc (@lh) {
+  .ta(center);
+  .lh(@lh);
+}
+// 文本隐藏
+.font-hidden () {
+  .wrap () {
+    .of-h;
+    .to(ellipsis);
+    .ws(normal);
+  }
+  .nowrap () {
+    .of-h;
+    .to(ellipsis);
+    .ws(nowrap);
+  }
 }
 // 文本分列
 .column (@count, @gap, @width: 1px, @color: @c-line, @style: solid) {
@@ -145,45 +162,45 @@
   .l(@left);
   .r(@right);
   .zi(@index);
-  .top (@p, @index: 1, @top: 0) {
+  .top (@p: absolute, @index: 1, @top: 0) {
     .pos(@p);
     .t(@top);
     .zi(@index);
   }
-  .bottom (@p, @index: 1, @bottom: 0) {
+  .bottom (@p: absolute, @index: 1, @bottom: 0) {
     .pos(@p);
     .b(@bottom);
     .zi(@index);
   }
-  .left (@p, @index: 1, @left: 0) {
+  .left (@p: absolute, @index: 1, @left: 0) {
     .pos(@p);
     .l(@left);
     .zi(@index);
   }
-  .right (@p, @index: 1, @right: 0) {
+  .right (@p: absolute, @index: 1, @right: 0) {
     .pos(@p);
     .r(@right);
     .zi(@index);
   }
-  .top-left (@p, @index: 1, @top: 0, @left: 0) {
+  .top-left (@p: absolute, @index: 1, @top: 0, @left: 0) {
     .pos(@p);
     .t(@top);
     .l(@left);
     .zi(@index);
   }
-  .top-right (@p, @index: 1, @top: 0, @right: 0) {
+  .top-right (@p: absolute, @index: 1, @top: 0, @right: 0) {
     .pos(@p);
     .t(@top);
     .r(@right);
     .zi(@index);
   }
-  .bottom-left (@p, @index: 1, @bottom: 0, @left: 0) {
+  .bottom-left (@p: absolute, @index: 1, @bottom: 0, @left: 0) {
     .pos(@p);
     .b(@bottom);
     .l(@left);
     .zi(@index);
   }
-  .bottom-right (@p, @index: 1, @bottom: 0, @right: 0) {
+  .bottom-right (@p: absolute, @index: 1, @bottom: 0, @right: 0) {
     .pos(@p);
     .b(@bottom);
     .r(@right);
@@ -315,6 +332,15 @@
 // 旋转
 .rotate (@rotate: 0deg) {
   .tf(rotate(@rotate));
+  .x (@x: 0) {
+    .tf(rotateX(@x));
+  }
+  .y (@y: 0) {
+    .tf(rotateY(@y));
+  }
+  .z (@z: 0) {
+    .tf(rotateZ(@z));
+  }
   .rotate3d (@x: 0, @y: 0, @z: 0, @rotate: 0deg) {
     .tf(rotate3d(@x, @y, @z, @rotate));
   }
@@ -467,8 +493,8 @@
 }
 
 // 滤镜
-.filter (@filter) {
-  .fil(@filter);
+.filter (...) {
+  .fil(@arguments);
 }
 // 高斯模糊
 .blur (@blur) {
@@ -509,4 +535,22 @@
 // 阴影
 .drop-shadow (@x, @y, @b, @color: @c-shadow) {
   .fil(drop-shadow(@x, @y, @b, @color));
+}
+
+// 动画 @duration: 持续时间,  @delay: 延迟播放, @count: 播放次数(infinite: 无限次播放)
+.animation (@name, @duration: 1s, @delay: 0s, @count: infinite) {
+  .ann(@name);
+  .andur(@duration);
+  .andel(@delay);
+  .anc(@count);
+}
+.animation-state (@duration: 1s, @delay: 0s, @count: infinite) {
+  .andur(@duration);
+  .andel(@delay);
+  .anc(@count);
+}
+.transition (@property: transform, @duration: 1s, @delay: 0s) {
+  .tsp(@property);
+  .tsdur(@duration);
+  .tsdel(@delay);
 }

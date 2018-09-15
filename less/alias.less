@@ -24,19 +24,19 @@
     .bs(@x, @y, @b, @c, inset);
   }
 }
-.bd (@w, @c: @c-line, @s: solid) {
+.bd (@w: 1px, @c: @c-line, @s: solid) {
   border: @w @s @c;
 }
-.bdt (@w, @c: @c-line, @s: solid) {
+.bdt (@w: 1px, @c: @c-line, @s: solid) {
   border-top: @w @s @c;
 }
-.bdb (@w, @c: @c-line, @s: solid) {
+.bdb (@w: 1px, @c: @c-line, @s: solid) {
   border-bottom: @w @s @c;
 }
-.bdl (@w, @c: @c-line, @s: solid) {
+.bdl (@w: 1px, @c: @c-line, @s: solid) {
   border-left: @w @s @c;
 }
-.bdr (@w, @c: @c-line, @s: solid) {
+.bdr (@w: 1px, @c: @c-line, @s: solid) {
   border-right: @w @s @c;
 }
 .bdi (...) {
@@ -59,6 +59,9 @@
   resize: @s;
 }
 
+.f (...) {
+  font: @arguments;
+}
 .fs (@s) {
   font-size: @s;
 }
@@ -80,10 +83,10 @@
 .fw (@w) {
   font-weight: @w;
 }
-.ts (@x, @y, @b, @c: @c-shadow) {
+.ts (@x: 0, @y: 1px, @b: 4px, @c: @c-shadow) {
   text-shadow: @x @y @b @c;
 }
-.tso (@w, @c) {
+.tstr (@w, @c) {
   .prew(text-stroke, @w @c);
 }
 .td (@d) {
@@ -194,9 +197,6 @@
 .pos (@p) {
   position: @p;
 }
-.zi (@i) {
-  z-index: @i;
-}
 .t (@t) {
   top: @t;
 }
@@ -208,6 +208,9 @@
 }
 .r (@r) {
   right: @r;
+}
+.zi (@i) {
+  z-index: @i;
 }
 
 .bg (...) {
@@ -294,7 +297,7 @@
 .con (@c) {
   content: @c;
 }
-.us (@s) {
+.us (@s: none) {
   .prew(user-select, @s);
 }
 
