@@ -222,14 +222,14 @@
 .bgi (@i) {
   background-image: @i;
 }
-.bgp (@x, @y: @x) {
-  background-position: @x @y;
+.bgp (...) {
+  background-position: @arguments;
 }
-.bgs (@w, @h: @w) {
-  background-size: @w @h;
+.bgs (...) {
+  background-size: @arguments;
 }
-.bgr (@x, @y: @x) {
-  background-repeat: @x @y;
+.bgr (...) {
+  background-repeat: @arguments;
 }
 .bga (@a) {
   background-attachment: @a;

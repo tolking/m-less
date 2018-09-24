@@ -28,7 +28,7 @@
   .shadow (@x: 0, @y: 1px, @b: 6px, @color: @c-shadow) {
     .bs(@x, @y, @b, @color);
   }
-  .shadow (@x: 0, @y: 1px, @b: 6px, @color, @width, @height: auto) {
+  .shadow (@x, @y, @b, @color, @width, @height: auto) {
     .box(@width, @height);
     .bs(@x, @y, @b, @color);
   }
@@ -97,14 +97,14 @@
   .weight (@weight: normal) {
     .fw(@weight);
   }
-  .weight (@weight: normal, @size, @color: @c-text) {
+  .weight (@weight, @size, @color: @c-text) {
     .font(@size, @color);
     .fw(@weight);
   }
   .shadow (@x: 0, @y: 1px, @b: 4px, @shadow-color: @c-shadow) {
     .ts(@x, @y, @b, @shadow-color);
   }
-  .shadow (@x: 0, @y: 1px, @b: 4px, @shadow-color: @c-shadow, @size, @color: @c-text) {
+  .shadow (@x, @y, @b, @shadow-color: @c-shadow, @size, @color: @c-text) {
     .font(@size, @color);
     .ts(@x, @y, @b, @shadow-color);
   }
@@ -120,7 +120,7 @@
   .style (@style: italic) {
     font-style: @style;
   }
-  .style (@style: italic, @size, @color: @c-text) {
+  .style (@style, @size, @color: @c-text) {
     .font(@size, @color);
     font-style: @style;
   }
@@ -298,8 +298,8 @@
   }
 }
 // 平移
-.translate (@x: 0, @y: @x) {
-  .tf(translate(@x, @y));
+.translate (...) {
+  .tf(translate(@arguments));
   .x (@x: 0) {
     .tf(translateX(@x));
   }
@@ -309,13 +309,13 @@
   .z (@z: 0) {
     .tf(translateZ(@z));
   }
-  .translate3d (@x: 0, @y: 0, @z: 0) {
-    .tf(translate3d(@x, @y, @z));
+  .translate3d (...) {
+    .tf(translate3d(@arguments));
   }
 }
 // 缩放
-.scale (@x: 0, @y: @x) {
-  .tf(scale(@x, @y));
+.scale (...) {
+  .tf(scale(@arguments));
   .x (@x: 0) {
     .tf(scaleX(@x));
   }
@@ -325,8 +325,8 @@
   .z (@z: 0) {
     .tf(scaleZ(@z));
   }
-  .scale3d (@x: 0, @y: 0, @z: 0) {
-    .tf(scale3d(@x, @y, @z));
+  .scale3d (...) {
+    .tf(scale3d(@arguments));
   }
 }
 // 旋转
@@ -346,8 +346,8 @@
   }
 }
 // 倾斜
-.skew (@x: 0deg, @y: @x) {
-  .tf(skew(@x, @y));
+.skew (...) {
+  .tf(skew(@arguments));
   .x (@x: 0deg) {
     .tf(skewX(@x));
   }
@@ -388,6 +388,42 @@
   .bg(radial-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
 }
 
+// 发散线条
+.top-line (@width: 100%, @heigh: 1px, @color: @c-line, @time: 1s) {
+  .transition(transform, @time);
+  &:before {
+    .con("");
+    .d-b;
+    .ml(calc((100% - @width) / 2));
+    .box(@width, @heigh);
+    .bgc(@color);
+    .scale>.x(0);
+    .transition(transform, @time);
+  }
+  &:hover:before {
+    .ml(calc((100% - @width) / 2));
+    .scale>.x(1);
+    .transition(transform, @time);
+  }
+}
+.bottom-line (@width: 100%, @heigh: 1px, @color: @c-line, @time: 1s) {
+  .transition(transform, @time);
+  &:after {
+    .con("");
+    .d-b;
+    .ml(calc((100% - @width) / 2));
+    .box(@width, @heigh);
+    .bgc(@color);
+    .scale>.x(0);
+    .transition(transform, @time);
+  }
+  &:hover:after {
+    .ml(calc((100% - @width) / 2));
+    .scale>.x(1);
+    .transition(transform, @time);
+  }
+}
+
 // 镜像效果
 .reflect (@l: 0px, @opacity: 0.3, @length: 70%){
   .bref(below @l linear-gradient(0deg, rgba(250, 250, 250, @opacity),rgba(250, 250, 250, 0) @length,rgba(250, 250, 250, 0)));
@@ -421,10 +457,10 @@
   .cur-p;
   .transition(all, @time);
   &:after {
-    content: "";
+    .con("");
     .absolute;
     .d-b;
-    .box(@w, @h);
+    .box>.radius(@r, @w, @h);
     .bg-radial(lighten(@c, @l) 10%, @c-t 11%);
     .bgr(no-repeat);
     .bgp(50%);
