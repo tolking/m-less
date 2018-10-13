@@ -1,7 +1,7 @@
+@import "variable";
 @import "alias";
 @import "mixitem";
-@import "color";
-@import "family";
+@import "svg";
 
 // 尺寸
 .box (@width: auto, @height: auto) {
@@ -142,6 +142,7 @@
     -webkit-box-orient: vertical;
     .of-h;
     .to(ellipsis);
+    .ws(normal);
   }
   .nowrap () {
     .of-h;
@@ -290,6 +291,16 @@
     .position>.bottom-right(relative, @index, @bottom, @right);
   }
 }
+.position-cc () {
+  .absolute>.top-left(1, 50%, 50%);
+  .translate(-50%, -50%);
+}
+.position-cc (@width, @height: @width) {
+  .absolute>.top-left(1, 50%, 50%);
+  .mt(-@height / 2);
+  .ml(-@width / 2);
+  .box(@width, @height);
+}
 
 // transform
 // 矩阵
@@ -359,35 +370,35 @@
 }
 
 // 背景
-.bg-img (@url, @r: no-repeat, @p: center, @s: 100%) {
+.bg-img (@url, @s: 100%, @p: center, @r: no-repeat) {
   .bgi(url(@url));
-  .bgr(@r);
-  .bgp(@p);
   .bgs(@s);
+  .bgp(@p);
+  .bgr(@r);
 }
 .bg-line (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: 90deg) {
-  .bg(@e-c, linear-gradient(@r, @s-c, @e-c));
+  .bgi(linear-gradient(@r, @s-c, @e-c));
 }
 .bg-line (@s-c, @c2, @e-c, @r: 90deg) {
-  .bg(@e-c, linear-gradient(@r, @s-c, @c2, @e-c));
+  .bgi(linear-gradient(@r, @s-c, @c2, @e-c));
 }
 .bg-line (@s-c, @c2, @c3, @e-c, @r: 90deg) {
-  .bg(@e-c, linear-gradient(@r, @s-c, @c2, @c3, @e-c));
+  .bgi(linear-gradient(@r, @s-c, @c2, @c3, @e-c));
 }
 .bg-line-rainbow (@r: 90deg) {
-  .bg(linear-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
+  .bgi(linear-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
 }
 .bg-radial (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: circle) {
-  .bg(@e-c, radial-gradient(@r, @s-c, @e-c));
+  .bgi(radial-gradient(@r, @s-c, @e-c));
 }
 .bg-radial (@s-c, @c2, @e-c, @r: circle) {
-  .bg(@s-c, radial-gradient(@r, @s-c, @c2, @e-c));
+  .bgi(radial-gradient(@r, @s-c, @c2, @e-c));
 }
 .bg-radial (@s-c, @c2, @c3, @e-c, @r: circle) {
-  .bg(@s-c, radial-gradient(@r, @s-c, @c2, @c3, @e-c));
+  .bgi(radial-gradient(@r, @s-c, @c2, @c3, @e-c));
 }
 .bg-radial-rainbow (@r: circle) {
-  .bg(radial-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
+  .bgi(radial-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
 }
 
 // 扩散线条
@@ -422,6 +433,38 @@
   &:hover:after {
     .ml(calc((100% - @width) / 2));
     .scale>.x(1);
+    .transition(transform, @time);
+  }
+}
+.left-line (@width: 1px, @heigh: 100%, @color: @c-line, @time: 1s) {
+  .d-ibm;
+  .transition(transform, @time);
+  &:before {
+    .con("");
+    .d-ibm;
+    .box(@width, @heigh);
+    .bgc(@color);
+    .scale>.y(0);
+    .transition(transform, @time);
+  }
+  &:hover:before {
+    .scale>.y(1);
+    .transition(transform, @time);
+  }
+}
+.right-line (@width: 1px, @heigh: 100%, @color: @c-line, @time: 1s) {
+  .d-ibm;
+  .transition(transform, @time);
+  &:after {
+    .con("");
+    .d-ibm;
+    .box(@width, @heigh);
+    .bgc(@color);
+    .scale>.y(0);
+    .transition(transform, @time);
+  }
+  &:hover:after {
+    .scale>.y(1);
     .transition(transform, @time);
   }
 }
@@ -467,7 +510,7 @@
     .bgr(no-repeat);
     .bgp(50%);
     .op(0);
-    .scale(10);
+    .scale(10, 10);
     pointer-events: none;
     .transition(all, @time);
   }
@@ -477,7 +520,7 @@
   }
   &:active:after {
     .op(0.4);
-    .scale(0);
+    .scale;
     .transition(all, 0s);
   }
 }

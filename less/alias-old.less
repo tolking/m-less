@@ -19,7 +19,7 @@
   max-height: @h;
 }
 .bs (@x: 0, @y: 1px, @b: 6px, @c: @c-shadow, ...) {
-  box-shadow: @arguments;
+  .prewm(box-shadow, @arguments);
   .inset (@x: 0, @y: 1px, @b: 6px, @c: @c-shadow) {
     .bs(@x, @y, @b, @c, inset);
   }
@@ -40,13 +40,13 @@
   border-right: @w @s @c;
 }
 .bdi (...) {
-  border-image: @arguments;
+  .prew(border-image, @arguments);
 }
 .br (...) {
-  border-radius: @arguments;
+  .pre(border-radius, @arguments);
 }
 .bsiz (@s) {
-  box-sizing: @s;
+  .prewm(box-sizing, @s);
 }
 .oo (@o) {
   outline-offset: @o;
@@ -90,7 +90,7 @@
   .prew(text-stroke, @w @c);
 }
 .td (@d) {
-  text-decoration: @d;
+  .prew(text-decoration, @d);
 }
 .to (@o) {
   text-overflow: @o;
@@ -103,13 +103,13 @@
 }
 
 .cc (@c) {
-  column-count: @c;
+  .prewm(column-count, @c);
 }
 .cg (@g) {
-  column-gap: @g;
+  .prewm(column-gap, @g);
 }
 .cr (@w: 1px, @c: @c-line, @s: solid) {
-  column-rule: @arguments;
+  .prewm(column-rule, @arguments);
 }
 
 .m (...) {
@@ -158,40 +158,40 @@
 }
 
 .fxd (@d) {
-  flex-direction: @d;
+  .pre(flex-direction, @d);
 }
 .fxw (@w) {
-  flex-wrap: @w;
+  .pre(flex-wrap, @w);
 }
 .fxf (@f) {
-  flex-flow: @f;
+  .pre(flex-flow, @f);
 }
 .jc (@c) {
-  justify-content: @c;
+  .pre(justify-content, @c);
 }
 .ai (@i) {
-  align-items: @i;
+  .pre(align-items, @i);
 }
 .ac (@c) {
-  align-content: @c;
+  .pre(align-content, @c);
 }
 .ord (@ord) {
-  order: @ord;
+  .pre(order, @ord);
 }
 .fxg (@g) {
-  flex-grow: @g;
+  .pre(flex-grow, @g);
 }
 .fxs (@s) {
-  flex-shrink: @s;
+  .pre(flex-shrink, @s);
 }
 .fxb (@b) {
-  flex-basis: @b;
+  .pre(flex-basis, @b);
 }
 .fx (...) {
-  flex: @arguments;
+  .pre(flex, @arguments);
 }
 .as (@s) {
-  align-self: @s;
+  .pre(align-self, @s);
 }
 
 .pos (@p) {
@@ -226,7 +226,7 @@
   background-position: @arguments;
 }
 .bgs (...) {
-  background-size: @arguments;
+  .pre(background-size, @arguments);
 }
 .bgr (...) {
   background-repeat: @arguments;
@@ -242,50 +242,50 @@
 }
 
 .tf (...) {
-  transform: @arguments;
+  .pre(transform, @arguments);
 }
 .tfo (...) {
-  transform-origin: @arguments;
+  .pre(transform-origin, @arguments);
 }
 .fil (...) {
   .prew(filter, @arguments);
 }
 
 .an (...) {
-  animation: @arguments;
+  .pre(animation, @arguments);
 }
 .ann (@n) {
-  animation-name: @n;
+  .pre(animation-name, @n);
 }
 .andur (@d) {
-  animation-duration: @d;
+  .pre(animation-duration, @d);
 }
 .andel (@d) {
-  animation-delay: @d;
+  .pre(animation-delay, @d);
 }
 .andir (@d) {
-  animation-direction: @d;
+  .pre(animation-direction, @d);
 }
 .anc (@c) {
-  animation-iteration-count: @c;
+  .pre(animation-iteration-count, @c);
 }
 .antf (@tf) {
-  animation-timing-function: @tf;
+  .pre(animation-timing-function, @tf);
 }
 .ts (...) {
-  transition: @arguments;
+  .pre(transition, @arguments);
 }
 .tsp (@p: transform) {
-  transition-property: @p;
+  .pre(transition-property, @p);
 }
 .tsdur (@dur) {
-  transition-duration: @dur;
+  .pre(transition-duration, @dur);
 }
 .tsdel (@del) {
-  transition-delay: @del;
+  .pre(transition-delay, @del);
 }
 .tstf (@tf) {
-  transition-timing-function: @tf;
+  .pre(transition-timing-function, @tf);
 }
 
 .op (@p) {
@@ -316,4 +316,5 @@
 .prewm (@style, @value) {
   -webkit-@{style}: @value;
   -ms-@{style}: @value;
+  @{style}: @value;
 }

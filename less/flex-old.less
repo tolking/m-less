@@ -1,0 +1,183 @@
+@import "mixins";
+
+// .flex-test {
+//   .flex;
+//   .flex-direction(row);
+//   .flex-wrap(nowrap);
+//   .justify-content(flex-start);
+//   .align-items(center);
+//   .align-content(stretch);
+// }
+// 水平单列向下排列
+.flex-c {
+  .flex>.box;
+  .flex-direction>.column;
+}
+// 水平单列向下排列、排满向右换列
+.flex-cw {
+  .flex>.box;
+  .flex-direction>.column;
+  .flex-wrap>.wrap;
+}
+// 水平靠左排满换行
+.flex-w {
+  .flex>.box;
+  .flex-wrap>.wrap;
+}
+// 水平单行居中、垂直居中
+.flex-cc {
+  .flex>.box;
+  .justify-content>.center;
+  .align-items>.center;
+}
+// 水平单列向下换行、垂直居中
+.flex-ccc {
+  .flex>.box;
+  .flex-direction>.column;
+  .justify-content>.center;
+  .align-items>.center;
+}
+// 水平单行靠两边、不换行
+.flex-b {
+  .flex>.box;
+  .justify-content>.between;
+}
+// 水平单行靠两边、垂直居中
+.flex-bc {
+  .flex>.box;
+  .justify-content>.between;
+  .align-items>.center;
+}
+// 水平单行平均间隙、垂直居中
+.flex-ac {
+  .flex>.box;
+  .justify-content>.around;
+  .align-items>.center;
+}
+// 水平靠两边、排满向下换行
+.flex-wb {
+  .flex>.box;
+  .flex-wrap>.wrap;
+  .justify-content>.between;
+}
+// 水平靠两边、排满向下换行、垂直居中
+.flex-wbs {
+  .flex>.box;
+  .flex-wrap>.wrap;
+  .justify-content>.between;
+  .align-content(space-between);
+}
+// 水平单列向下换行、垂直靠两边
+.flex-cbc {
+  .flex>.box;
+  .flex-direction>.column;
+  .justify-content>.between;
+  .align-items>.center;
+}
+// 向左排列、配合定位使用
+.reverse {
+  .flex-direction>.row-r;
+  .flex-wrap>.wrap-r;
+}
+
+// 弹性盒子
+.flex () {
+  display: -webkit-flex;
+  display: flex;
+  .box () {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+}
+.flex-direction (@value: row) {
+  .prew(flex-direction, @value);
+  .rew () {
+    .prewm(box-direction, normal);
+    .prewm(box-orient, horizontal);
+    .prew(flex-direction, row);
+  }
+  .row-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, horizontal);
+    .prew(flex-direction, row-reverse);
+  }
+  .column () {
+    .prewm(box-direction, normal);
+    .prewm(box-orient, vertical);
+    .prew(flex-direction, column);
+  }
+  .column-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, vertical);
+    .prew(flex-direction, column-reverse);
+  }
+}
+.flex-wrap (@value: nowrap) {
+  .pre(flex-wrap, @value);
+  .nowrap () {
+    -webkit-box-lines: single;
+    .prew(flex-wrap, nowrap);
+  }
+  .wrap () {
+    -webkit-box-lines: multiple;
+    .prew(flex-wrap, wrap);
+  }
+  .wrap-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, vertical);
+    -webkit-box-lines: multiple;
+    .prew(flex-wrap, wrap-reverse);
+  }
+}
+.justify-content (@value: flex-start) {
+  .pre(justify-content, @value);
+  .start () {
+    .prewm(box-pack, start);
+    .prew(justify-content, flex-start);
+  }
+  .end () {
+    .prewm(box-pack, end);
+    .prew(justify-content, flex-end);
+  }
+  .center () {
+    .prewm(box-pack, center);
+    .prew(justify-content, center);
+  }
+  .between () {
+    .prewm(box-pack, justify);
+    .prew(justify-content, space-between);
+  }
+  .around () {
+    .prewm(box-pack, justify);
+    .prew(justify-content, space-around);
+  }
+}
+.align-items (@value: stretch) {
+  .pre(align-items, @value);
+  .stretch () {
+    .prewm(align-items, stretch);
+    .prew(align-items, stretch);
+  }
+  .flex-start () {
+    .prewm(align-items, start);
+    .prew(align-items, flex-start);
+  }
+  .flex-end () {
+    .prewm(align-items, end);
+    .prew(align-items, flex-end);
+  }
+  .center () {
+    .prewm(align-items, center);
+    .prew(align-items, center);
+  }
+  .baseline () {
+    .prewm(align-items, baseline);
+    .prew(align-items, baseline);
+  }
+}
+.align-content (@value: stretch) {
+  .prew(align-content, @value);
+}
