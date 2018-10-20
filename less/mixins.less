@@ -291,12 +291,12 @@
     .position>.bottom-right(relative, @index, @bottom, @right);
   }
 }
-.position-cc () {
-  .absolute>.top-left(1, 50%, 50%);
+.position-cc (@z-index: 1) {
+  .absolute>.top-left(@z-index, 50%, 50%);
   .translate(-50%, -50%);
 }
-.position-cc (@width, @height: @width) {
-  .absolute>.top-left(1, 50%, 50%);
+.position-cc (@z-index: 1, @width, @height) {
+  .absolute>.top-left(@z-index, 50%, 50%);
   .mt(-@height / 2);
   .ml(-@width / 2);
   .box(@width, @height);
