@@ -10,6 +10,10 @@
   @m: escape("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' style='stroke:@{color};stroke-width: 1'><line x1='1' y1='5' x2='9' y2='5'/></svg>");
   .bg-img("@{svg-base}@{m}", @size, @position, @repeat);
 }
+.svg-menu (@color: @c-line, @size: 100%, @position: center, @repeat: no-repeat) {
+  @m: escape("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' style='fill:@{color}'><path d='M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z'></path></svg>");
+  .bg-img("@{svg-base}@{m}", @size, @position, @repeat);
+}
 .svg-close (@color: @c-line, @size: 100%, @position: center, @repeat: no-repeat) {
   @m: escape("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' style='stroke:@{color};stroke-width: 1'><line x1='1' y1='1' x2='9' y2='9'/><line x1='9' y1='1' x2='1' y2='9'/></svg>");
   .bg-img("@{svg-base}@{m}", @size, @position, @repeat);
