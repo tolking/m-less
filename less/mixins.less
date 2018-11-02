@@ -376,6 +376,12 @@
   .bgp(@p);
   .bgr(@r);
 }
+.bg-sprite (@url, @p, @r: no-repeat) {
+  .bgi(url(@url));
+  .bgs(auto);
+  .bgp(@p);
+  .bgr(@r);
+}
 .bg-line (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: 90deg) {
   .bgi(linear-gradient(@r, @s-c, @e-c));
 }
