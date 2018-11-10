@@ -382,26 +382,32 @@
   .bgp(@p);
   .bgr(@r);
 }
-.bg-line (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: 90deg) {
+.bg-line (@r, @s-c: @c-black, @e-c: fade(@s-c, 0%)) {
   .bgi(linear-gradient(@r, @s-c, @e-c));
 }
-.bg-line (@s-c, @c2, @e-c, @r: 90deg) {
+.bg-line (@r, @s-c, @c2, @e-c) {
   .bgi(linear-gradient(@r, @s-c, @c2, @e-c));
 }
-.bg-line (@s-c, @c2, @c3, @e-c, @r: 90deg) {
+.bg-line (@r, @s-c, @c2, @c3, @e-c) {
   .bgi(linear-gradient(@r, @s-c, @c2, @c3, @e-c));
+}
+.bg-line (@r, @s-c, @c2, @c3, @c4, @e-c) {
+  .bgi(linear-gradient(@r, @s-c, @c2, @c3, @c4, @e-c));
 }
 .bg-line-rainbow (@r: 90deg) {
   .bgi(linear-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
 }
-.bg-radial (@s-c: @c-black, @e-c: fade(@s-c, 0%), @r: circle) {
+.bg-radial (@r, @s-c: @c-black, @e-c: fade(@s-c, 0%)) {
   .bgi(radial-gradient(@r, @s-c, @e-c));
 }
-.bg-radial (@s-c, @c2, @e-c, @r: circle) {
+.bg-radial (@r, @s-c, @c2, @e-c) {
   .bgi(radial-gradient(@r, @s-c, @c2, @e-c));
 }
-.bg-radial (@s-c, @c2, @c3, @e-c, @r: circle) {
+.bg-radial (@r, @s-c, @c2, @c3, @e-c) {
   .bgi(radial-gradient(@r, @s-c, @c2, @c3, @e-c));
+}
+.bg-radial (@r, @s-c, @c2, @c3, @c4, @e-c) {
+  .bgi(radial-gradient(@r, @s-c, @c2, @c3, @c4, @e-c));
 }
 .bg-radial-rainbow (@r: circle) {
   .bgi(radial-gradient(@r, #E50743 0%, #F9870F 15%, #E8ED30 30%, #3FA62E 45%, #3BB4D7 60%, #2F4D9E 75%, #71378A 80%));
@@ -443,14 +449,13 @@
   }
 }
 .left-line (@width: 1px, @heigh: 100%, @color: @c-line, @time: 1s) {
-  .d-ibm;
   .transition(transform, @time);
   &:before {
     .con("");
-    .d-ibm;
     .box(@width, @heigh);
     .bgc(@color);
     .scale>.y(0);
+    float: left;
     .transition(transform, @time);
   }
   &:hover:before {
@@ -459,14 +464,13 @@
   }
 }
 .right-line (@width: 1px, @heigh: 100%, @color: @c-line, @time: 1s) {
-  .d-ibm;
   .transition(transform, @time);
   &:after {
     .con("");
-    .d-ibm;
     .box(@width, @heigh);
     .bgc(@color);
     .scale>.y(0);
+    float: right;
     .transition(transform, @time);
   }
   &:hover:after {
@@ -511,8 +515,8 @@
     .con("");
     .absolute;
     .d-b;
-    .box(@w, @h);
-    .bg-radial(lighten(@c, @l) 10%, @c-t 11%);
+    .box>.radius(@r, 100%, @h);
+    .bg-radial(circle, lighten(@c, @l) 10%, @c-t 11%);
     .bgr(no-repeat);
     .bgp(50%);
     .op(0);

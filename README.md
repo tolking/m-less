@@ -18,7 +18,8 @@
 ## 简介
 - 自用的less文件
 - 包含常用属性简写、常用的 mixins、常用的 flex 类名、颜色及字体定义、清除浏览器默认样式
-- 默认只对少数几个属性进行了浏览器前缀处理，使用 Autoprefixer 处理浏览器前缀兼容或者手动引入 -old 文件（查看下面说明）
+- 默认只对少数几个属性进行了浏览器前缀处理，建议使用 Autoprefixer 处理浏览器前缀兼容
+- 或者手动引入 -old 文件（查看下面说明）
 [所有参数介绍](https://ououe.com/less)
 
 ## 目录结构
@@ -80,5 +81,6 @@ import "./less/styles.less";
 - 屏蔽上面开发代码，引入 styles.css
 
 ## 手动引入 -old
+**仅对内置属性处理**
 1. 将 mixins.less 里面的 @import "alias"; 改为 @import "alias-old";
 2. 将 styles.less 里面的 @import "flex"; 改为 @import "flex-old";
