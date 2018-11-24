@@ -11,10 +11,18 @@
   .fxd(column);
   .fxw(wrap);
 }
-// 水平靠左排满换行
-.flex-w {
+// 水平单列居左向下换行、垂直靠两边
+.flex-cb {
   .d(flex);
-  .fxw(wrap);
+  .fxd(column);
+  .jc(space-between);
+}
+// 水平单列向下换行、垂直靠两边
+.flex-cbc {
+  .d(flex);
+  .fxd(column);
+  .jc(space-between);
+  .ai(center);
 }
 // 水平单行居中、垂直居中
 .flex-cc {
@@ -46,11 +54,10 @@
   .jc(space-around);
   .ai(center);
 }
-// 水平靠两边、排满向下换行
-.flex-wb {
+// 水平靠左排满换行
+.flex-w {
   .d(flex);
   .fxw(wrap);
-  .jc(space-between);
 }
 // 水平平均间隙、排满向下换行
 .flex-wa {
@@ -58,19 +65,18 @@
   .fxw(wrap);
   .jc(space-around);
 }
+// 水平靠两边、排满向下换行
+.flex-wb {
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-between);
+}
 // 水平靠两边、排满向下换行、垂直居中
 .flex-wbs {
   .d(flex);
   .fxw(wrap);
   .jc(space-between);
   .ac(space-between);
-}
-// 水平单列向下换行、垂直靠两边
-.flex-cbc {
-  .d(flex);
-  .fxd(column);
-  .jc(space-between);
-  .ai(center);
 }
 // 向左排列、配合定位使用
 .reverse {
