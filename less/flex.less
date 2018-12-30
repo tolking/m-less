@@ -1,87 +1,176 @@
 @import "mixins";
 
-// 水平单列向下排列
-.flex-c {
+// 水平排列不换行，垂直占满高度
+.flex-x {
+  .d(flex);
+}
+// 水平占满宽度，垂直排列不换行
+.flex-y {
   .d(flex);
   .fxd(column);
 }
-// 水平单列向下排列、排满向右换列
-.flex-cw {
-  .d(flex);
-  .fxd(column);
-  .fxw(wrap);
-}
-// 水平单列居左向下换行、垂直靠两边
+// 水平占满宽度向下换行、垂直靠两边
 .flex-cb {
   .d(flex);
   .fxd(column);
   .jc(space-between);
 }
-// 水平单列向下换行、垂直靠两边
+// 水平居中向下换行、垂直靠两边
 .flex-cbc {
   .d(flex);
   .fxd(column);
   .jc(space-between);
   .ai(center);
 }
-// 水平单行居中、垂直居中
-.flex-cc {
-  .d(flex);
-  .jc(center);
-  .ai(center);
-}
-// 水平单列向下换行、垂直居中
+// 水平居中向下换行、垂直居中
 .flex-ccc {
   .d(flex);
   .fxd(column);
   .jc(center);
   .ai(center);
 }
-// 水平单行靠两边、不换行
-.flex-b {
+// 水平占满宽度向下换行、排满向右换列
+.flex-cw {
   .d(flex);
-  .jc(space-between);
+  .fxd(column);
+  .fxw(wrap);
 }
-// 水平单行靠两边、垂直居中
-.flex-bc {
+
+// 水平平分排列不换行，垂直占满高度
+.flex-a {
   .d(flex);
-  .jc(space-between);
-  .ai(center);
+  .jc(space-around);
 }
-// 水平单行平均间隙、垂直居中
+// 水平平分排列不换行，垂直居中
 .flex-ac {
   .d(flex);
   .jc(space-around);
   .ai(center);
 }
-// 水平靠左排满换行
+// 水平平分排列不换行，垂直靠上
+.flex-as {
+  .d(flex);
+  .jc(space-around);
+  .ai(flex-start);
+}
+
+// 水平靠两边排列不换行，垂直占满高度
+.flex-b {
+  .d(flex);
+  .jc(space-between);
+}
+// 水平靠两边排列不换行，垂直居中
+.flex-bc {
+  .d(flex);
+  .jc(space-between);
+  .ai(center);
+}
+// 水平靠两边排列不换行，垂直靠上
+.flex-bs {
+  .d(flex);
+  .jc(space-between);
+  .ai(flex-start);
+}
+
+// 水平居中排列不换行，垂直占满高度
+.flex-c {
+  .d(flex);
+  .jc(center);
+}
+// 水平居中排列不换行，垂直居中
+.flex-cc {
+  .d(flex);
+  .jc(center);
+  .ai(center);
+}
+// 水平居中排列不换行，垂直靠上
+.flex-cs {
+  .d(flex);
+  .jc(center);
+  .ai(flex-start);
+}
+
+// 水平排满换行，垂直占满高度
 .flex-w {
   .d(flex);
   .fxw(wrap);
 }
-// 水平平均间隙、排满向下换行
+// 水平平分排列换行，垂直占满高度
 .flex-wa {
   .d(flex);
   .fxw(wrap);
   .jc(space-around);
 }
-// 水平靠两边、排满向下换行
+// 水平平分排列换行，垂直居中
+.flex-wac {
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-around);
+  .ai(center);
+}
+// 水平平分排列换行，垂直居中
+.flex-was {
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-around);
+  .ai(flex-start);
+}
+
+// 水平靠两边排列换行，垂直占满高度
 .flex-wb {
   .d(flex);
   .fxw(wrap);
   .jc(space-between);
 }
-// 水平靠两边、排满向下换行、垂直居中
+// 水平靠两边排列换行，垂直居中
+.flex-wbc {
+  .d(flex);
+  .fxw(wrap);
+  .jc(space-between);
+  .ai(center);
+}
+// 水平靠两边排列换行，垂直居中
 .flex-wbs {
   .d(flex);
   .fxw(wrap);
   .jc(space-between);
-  .ac(space-between);
+  .ai(flex-start);
 }
-// 向左排列、配合定位使用
-.reverse {
+
+// 水平居中排列换行，垂直占满高度
+.flex-wc {
+  .d(flex);
+  .fxw(wrap);
+  .jc(center);
+}
+// 水平居中排列换行，垂直居中
+.flex-wcc {
+  .d(flex);
+  .fxw(wrap);
+  .jc(center);
+  .ai(center);
+}
+// 水平居中排列换行，垂直居中
+.flex-wcs {
+  .d(flex);
+  .fxw(wrap);
+  .jc(center);
+  .ai(flex-start);
+}
+
+// 向左排列、配合使用
+.reverse-x {
   .fxd(row-reverse);
 }
+// 向上排列、配合使用
+.reverse-y {
+  .fxd(column-reverse);
+}
+// 向上换行、配合使用
+.reverse-w {
+  .fxw(wrap-reverse);
+}
+
 // .flex-test {
 //   .d(flex);
 //   .fxd(row);
