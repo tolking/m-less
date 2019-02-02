@@ -1,5 +1,3 @@
-@import "variable";
-
 .w (@w) {
   width: @w;
 }
@@ -90,7 +88,7 @@
   .prew(text-stroke, @w @c);
 }
 .td (@d) {
-  .prew(text-decoration, @d);
+  text-decoration: @d;
 }
 .to (@o) {
   text-overflow: @o;
@@ -157,23 +155,101 @@
   overflow: @arguments;
 }
 
-.fxd (@d) {
-  .pre(flex-direction, @d);
+// 弹性盒子
+.flex () {
+  display: -webkit-flex;
+  display: flex;
+  .box () {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
 }
-.fxw (@w) {
-  .pre(flex-wrap, @w);
+.fxd (@value: row) {
+  .prew(flex-direction, @value);
+  .row () {
+    .prewm(box-direction, normal);
+    .prewm(box-orient, horizontal);
+    .prew(flex-direction, row);
+  }
+  .row-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, horizontal);
+    .prew(flex-direction, row-reverse);
+  }
+  .column () {
+    .prewm(box-direction, normal);
+    .prewm(box-orient, vertical);
+    .prew(flex-direction, column);
+  }
+  .column-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, vertical);
+    .prew(flex-direction, column-reverse);
+  }
 }
-.fxf (@f) {
-  .pre(flex-flow, @f);
+.fxw (@value: nowrap) {
+  .pre(flex-wrap, @value);
+  .nowrap () {
+    -webkit-box-lines: single;
+    .prew(flex-wrap, nowrap);
+  }
+  .wrap () {
+    -webkit-box-lines: multiple;
+    .prew(flex-wrap, wrap);
+  }
+  .wrap-r () {
+    .prewm(box-direction, reverse);
+    .prewm(box-orient, vertical);
+    -webkit-box-lines: multiple;
+    .prew(flex-wrap, wrap-reverse);
+  }
 }
-.jc (@c) {
-  .pre(justify-content, @c);
+.jc (@value: flex-start) {
+  .pre(justify-content, @value);
+  .start () {
+    .prewm(box-pack, start);
+    .prew(justify-content, flex-start);
+  }
+  .end () {
+    .prewm(box-pack, end);
+    .prew(justify-content, flex-end);
+  }
+  .center () {
+    .prewm(box-pack, center);
+    .prew(justify-content, center);
+  }
+  .between () {
+    .prewm(box-pack, justify);
+    .prew(justify-content, space-between);
+  }
+  .around () {
+    .prewm(box-pack, justify);
+    .prew(justify-content, space-around);
+  }
 }
-.ai (@i) {
-  .pre(align-items, @i);
+.ai (@value: stretch) {
+  .pre(align-items, @value);
+  .stretch () {
+    .prewm(align-items, stretch);
+  }
+  .start () {
+    .prewm(align-items,  flex-start);
+  }
+  .end () {
+    .prewm(align-items,  flex-end);
+  }
+  .center () {
+    .prewm(align-items, center);
+  }
+  .baseline () {
+    .prewm(align-items, baseline);
+  }
 }
-.ac (@c) {
-  .pre(align-content, @c);
+.ac (@value: stretch) {
+  .prew(align-content, @value);
 }
 .ord (@ord) {
   .pre(order, @ord);
@@ -220,7 +296,7 @@
   background-color: @c;
 }
 .bgi (@i) {
-  background-image: @i;
+  background-image: ~"@{i}";
 }
 .bgp (...) {
   background-position: @arguments;

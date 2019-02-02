@@ -1,5 +1,3 @@
-@import "variable";
-
 .w (@w) {
   width: @w;
 }
@@ -220,7 +218,7 @@
   background-color: @c;
 }
 .bgi (@i) {
-  background-image: @i;
+  background-image: ~"@{i}";
 }
 .bgp (...) {
   background-position: @arguments;
