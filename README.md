@@ -1,6 +1,6 @@
 # m-less
 
-[所有参数介绍](https://ououe.com/less)
+[所有参数介绍](https://ououe.com/lib/m-less.html)
 
 ```html
 <div class="btn">btn</div>
@@ -20,7 +20,7 @@
 - 包含常用属性简写、常用的 mixins、常用的 flex 类名、颜色及字体定义、清除浏览器默认样式
 - 默认只对少数几个属性进行了浏览器前缀处理，建议使用 Autoprefixer 处理浏览器前缀兼容
 - 或者手动引入 -old 文件（查看下面说明）
-[所有参数介绍](https://ououe.com/less)
+[所有参数介绍](https://ououe.com/lib/m-less.html)
 
 ## 目录结构
 ```
