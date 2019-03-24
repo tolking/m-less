@@ -63,7 +63,7 @@
     .position>.left(fixed, @index, @left);
   }
   .right (@index: 1, @right: 0) {
-    .position>.right(fixed, @right);
+    .position>.right(fixed, @index, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(fixed, @index, @top, @left);
@@ -90,7 +90,7 @@
     .position>.left(absolute, @index, @left);
   }
   .right (@index: 1, @right: 0) {
-    .position>.right(absolute, @right);
+    .position>.right(absolute, @index, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(absolute, @index, @top, @left);
@@ -117,7 +117,7 @@
     .position>.left(relative, @index, @left);
   }
   .right (@index: 1, @right: 0) {
-    .position>.right(relative, @right);
+    .position>.right(relative, @index, @right);
   }
   .top-left (@index: 1, @top: 0, @left: 0) {
     .position>.top-left(relative, @index, @top, @left);

@@ -1,3 +1,5 @@
+@import "variable";
+
 .w (@w) {
   width: @w;
 }
@@ -173,21 +175,25 @@
     .prewm(box-direction, normal);
     .prewm(box-orient, horizontal);
     .prew(flex-direction, row);
+    -ms-flex-direction: normal;
   }
   .row-r () {
     .prewm(box-direction, reverse);
     .prewm(box-orient, horizontal);
     .prew(flex-direction, row-reverse);
+    -ms-flex-direction: inherit;
   }
   .column () {
     .prewm(box-direction, normal);
     .prewm(box-orient, vertical);
     .prew(flex-direction, column);
+    -ms-flex-direction: normal;
   }
   .column-r () {
     .prewm(box-direction, reverse);
     .prewm(box-orient, vertical);
     .prew(flex-direction, column-reverse);
+    -ms-flex-direction: inherit;
   }
 }
 .fxw (@value: nowrap) {
@@ -212,40 +218,55 @@
   .start () {
     .prewm(box-pack, start);
     .prew(justify-content, flex-start);
+    -ms-flex-pack: start;
   }
   .end () {
     .prewm(box-pack, end);
     .prew(justify-content, flex-end);
+    -ms-flex-pack: end;
   }
   .center () {
     .prewm(box-pack, center);
     .prew(justify-content, center);
+    -ms-flex-pack: center;
   }
   .between () {
     .prewm(box-pack, justify);
     .prew(justify-content, space-between);
+    -ms-flex-pack: justify;
   }
   .around () {
     .prewm(box-pack, justify);
     .prew(justify-content, space-around);
+    -ms-flex-pack: justify;
   }
 }
 .ai (@value: stretch) {
   .pre(align-items, @value);
   .stretch () {
+    .prewm(box-align, stretch);
     .prewm(align-items, stretch);
+    -ms-flex-align: stretch;
   }
   .start () {
+    .prewm(box-align, start);
     .prewm(align-items,  flex-start);
+    -ms-flex-align: start;
   }
   .end () {
+    .prewm(box-align, end);
     .prewm(align-items,  flex-end);
+    -ms-flex-align: end;
   }
   .center () {
+    .prewm(box-align, center);
     .prewm(align-items, center);
+    -ms-flex-align: center;
   }
   .baseline () {
+    .prewm(box-align, baseline);
     .prewm(align-items, baseline);
+    -ms-flex-align: baseline;
   }
 }
 .ac (@value: stretch) {
