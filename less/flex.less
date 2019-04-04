@@ -1,188 +1,437 @@
-@import "mixins";
+@import "flex/flex";
+// @import "flex/flex-old";
 
-// 水平排列不换行，垂直占满高度
-.flex-x {
-  .d(flex);
-}
-// 水平占满宽度，垂直排列不换行
-.flex-y {
-  .d(flex);
-  .fxd(column);
-}
-// 水平占满宽度向下换行、垂直靠两边
-.flex-cb {
-  .d(flex);
-  .fxd(column);
-  .jc(space-between);
-}
-// 水平居中向下换行
-.flex-csc {
-  .d(flex);
-  .fxd(column);
-  .jc(flex-start);
-  .ai(center);
-}
-// 水平居中向下换行、垂直靠两边
-.flex-cbc {
-  .d(flex);
-  .fxd(column);
-  .jc(space-between);
-  .ai(center);
-}
-// 水平居中向下换行、垂直居中
-.flex-ccc {
-  .d(flex);
-  .fxd(column);
-  .jc(center);
-  .ai(center);
-}
-// 水平占满宽度向下换行、排满向右换列
-.flex-cw {
-  .d(flex);
-  .fxd(column);
-  .fxw(wrap);
+.flex-x,
+.flex-xs {
+  .flex;
 }
 
-// 水平平分排列不换行，垂直占满高度
-.flex-a {
-  .d(flex);
-  .jc(space-around);
+.flex-xa {
+  .flex-x;
+  .jc-a;
 }
-// 水平平分排列不换行，垂直居中
-.flex-ac {
-  .d(flex);
-  .jc(space-around);
-  .ai(center);
+.flex-xb {
+  .flex-x;
+  .jc-b;
 }
-// 水平平分排列不换行，垂直靠上
-.flex-as {
-  .d(flex);
-  .jc(space-around);
-  .ai(flex-start);
+.flex-xc {
+  .flex-x;
+  .jc-c;
 }
-
-// 水平靠两边排列不换行，垂直占满高度
-.flex-b {
-  .d(flex);
-  .jc(space-between);
-}
-// 水平靠两边排列不换行，垂直居中
-.flex-bc {
-  .d(flex);
-  .jc(space-between);
-  .ai(center);
-}
-// 水平靠两边排列不换行，垂直靠上
-.flex-bs {
-  .d(flex);
-  .jc(space-between);
-  .ai(flex-start);
+.flex-xe {
+  .flex-x;
+  .jc-e;
 }
 
-// 水平居中排列不换行，垂直占满高度
-.flex-c {
-  .d(flex);
-  .jc(center);
+.flex-xss {
+  .flex-xs;
+  .ai-s;
 }
-// 水平居中排列不换行，垂直居中
-.flex-cc {
-  .d(flex);
-  .jc(center);
-  .ai(center);
+.flex-xsb {
+  .flex-xs;
+  .ai-b;
 }
-// 水平居中排列不换行，垂直靠上
-.flex-cs {
-  .d(flex);
-  .jc(center);
-  .ai(flex-start);
+.flex-xsc {
+  .flex-xs;
+  .ai-c;
+}
+.flex-xse {
+  .flex-xs;
+  .ai-e;
 }
 
-// 水平排满换行，垂直占满高度
-.flex-w {
-  .d(flex);
-  .fxw(wrap);
+.flex-xas {
+  .flex-xa;
+  .ai-s;
 }
-// 水平平分排列换行，垂直占满高度
+.flex-xab {
+  .flex-xa;
+  .ai-b;
+}
+.flex-xac {
+  .flex-xa;
+  .ai-c;
+}
+.flex-xae {
+  .flex-xa;
+  .ai-e;
+}
+
+.flex-xbs {
+  .flex-xb;
+  .ai-s;
+}
+.flex-xbb {
+  .flex-xb;
+  .ai-b;
+}
+.flex-xbc {
+  .flex-xb;
+  .ai-c;
+}
+.flex-xbe {
+  .flex-xb;
+  .ai-e;
+}
+
+.flex-xcs {
+  .flex-xc;
+  .ai-s;
+}
+.flex-xcb {
+  .flex-xc;
+  .ai-b;
+}
+.flex-xcc {
+  .flex-xc;
+  .ai-c;
+}
+.flex-xce {
+  .flex-xc;
+  .ai-e;
+}
+
+.flex-xes {
+  .flex-xe;
+  .ai-s;
+}
+.flex-xeb {
+  .flex-xe;
+  .ai-b;
+}
+.flex-xec {
+  .flex-xe;
+  .ai-c;
+}
+.flex-xee {
+  .flex-xe;
+  .ai-e;
+}
+
+
+.flex-y,
+.flex-ys {
+  .flex;
+  .fxd-c;
+}
+
+.flex-ya {
+  .flex-y;
+  .jc-a;
+}
+.flex-yb {
+  .flex-y;
+  .jc-b;
+}
+.flex-yc {
+  .flex-y;
+  .jc-c;
+}
+.flex-ye {
+  .flex-y;
+  .jc-e;
+}
+
+.flex-yss {
+  .flex-ys;
+  .ai-s;
+}
+.flex-ysb {
+  .flex-ys;
+  .ai-b;
+}
+.flex-ysc {
+  .flex-ys;
+  .ai-c;
+}
+.flex-yse {
+  .flex-ys;
+  .ai-e;
+}
+
+.flex-yas {
+  .flex-ya;
+  .ai-s;
+}
+.flex-yab {
+  .flex-ya;
+  .ai-b;
+}
+.flex-yac {
+  .flex-ya;
+  .ai-c;
+}
+.flex-yae {
+  .flex-ya;
+  .ai-e;
+}
+
+.flex-ybs {
+  .flex-yb;
+  .ai-s;
+}
+.flex-ybb {
+  .flex-yb;
+  .ai-b;
+}
+.flex-ybc {
+  .flex-yb;
+  .ai-c;
+}
+.flex-ybe {
+  .flex-yb;
+  .ai-e;
+}
+
+.flex-ycs {
+  .flex-yc;
+  .ai-s;
+}
+.flex-ycb {
+  .flex-yc;
+  .ai-b;
+}
+.flex-ycc {
+  .flex-yc;
+  .ai-c;
+}
+.flex-yce {
+  .flex-yc;
+  .ai-e;
+}
+
+.flex-yes {
+  .flex-ye;
+  .ai-s;
+}
+.flex-yeb {
+  .flex-ye;
+  .ai-b;
+}
+.flex-yec {
+  .flex-ye;
+  .ai-c;
+}
+.flex-yee {
+  .flex-ye;
+  .ai-e;
+}
+
+
+.flex-w,
+.flex-ws {
+  .flex;
+  .fxw-w;
+}
+
 .flex-wa {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-around);
+  .flex-w;
+  .jc-a;
 }
-// 水平平分排列换行，垂直居中
-.flex-wac {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-around);
-  .ai(center);
-}
-// 水平平分排列换行，垂直居中
-.flex-was {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-around);
-  .ai(flex-start);
-}
-
-// 水平靠两边排列换行，垂直占满高度
 .flex-wb {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-between);
+  .flex-w;
+  .jc-b;
 }
-// 水平靠两边排列换行，垂直居中
-.flex-wbc {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-between);
-  .ai(center);
-}
-// 水平靠两边排列换行，垂直居中
-.flex-wbs {
-  .d(flex);
-  .fxw(wrap);
-  .jc(space-between);
-  .ai(flex-start);
-}
-
-// 水平居中排列换行，垂直占满高度
 .flex-wc {
-  .d(flex);
-  .fxw(wrap);
-  .jc(center);
+  .flex-w;
+  .jc-c;
 }
-// 水平居中排列换行，垂直居中
-.flex-wcc {
-  .d(flex);
-  .fxw(wrap);
-  .jc(center);
-  .ai(center);
+.flex-we {
+  .flex-w;
+  .jc-e;
 }
-// 水平居中排列换行，垂直居中
+
+.flex-wss {
+  .flex-ws;
+  .ai-s;
+}
+.flex-wsb {
+  .flex-ws;
+  .ai-b;
+}
+.flex-wsc {
+  .flex-ws;
+  .ai-c;
+}
+.flex-wse {
+  .flex-ws;
+  .ai-e;
+}
+
+.flex-was {
+  .flex-wa;
+  .ai-s;
+}
+.flex-wab {
+  .flex-wa;
+  .ai-b;
+}
+.flex-wac {
+  .flex-wa;
+  .ai-c;
+}
+.flex-wae {
+  .flex-wa;
+  .ai-e;
+}
+
+.flex-wbs {
+  .flex-wb;
+  .ai-s;
+}
+.flex-wbb {
+  .flex-wb;
+  .ai-b;
+}
+.flex-wbc {
+  .flex-wb;
+  .ai-c;
+}
+.flex-wbe {
+  .flex-wb;
+  .ai-e;
+}
+
 .flex-wcs {
-  .d(flex);
-  .fxw(wrap);
-  .jc(center);
-  .ai(flex-start);
+  .flex-wc;
+  .ai-s;
+}
+.flex-wcb {
+  .flex-wc;
+  .ai-b;
+}
+.flex-wcc {
+  .flex-wc;
+  .ai-c;
+}
+.flex-wce {
+  .flex-wc;
+  .ai-e;
 }
 
-// 向左排列、配合使用
-.reverse-x {
-  .fxd(row-reverse);
+.flex-wes {
+  .flex-we;
+  .ai-s;
 }
-// 向上排列、配合使用
-.reverse-y {
-  .fxd(column-reverse);
+.flex-web {
+  .flex-we;
+  .ai-b;
 }
-// 向上换行、配合使用
-.reverse-w {
-  .fxw(wrap-reverse);
+.flex-wec {
+  .flex-we;
+  .ai-c;
+}
+.flex-wee {
+  .flex-we;
+  .ai-e;
 }
 
-// .flex-test {
-//   .d(flex);
-//   .fxd(row);
-//   .fxw(nowrap);
-//   .jc(flex-start);
-//   .ai(stretch);
-//   .ac(stretch);
-// }
+
+.flex-m,
+.flex-ms {
+  .flex;
+  .fxd-c;
+  .fxw-w;
+}
+
+.flex-ma {
+  .flex-m;
+  .jc-a;
+}
+.flex-mb {
+  .flex-m;
+  .jc-b;
+}
+.flex-mc {
+  .flex-m;
+  .jc-c;
+}
+.flex-me {
+  .flex-m;
+  .jc-e;
+}
+
+.flex-mss {
+  .flex-ms;
+  .ai-s;
+}
+.flex-msb {
+  .flex-ms;
+  .ai-b;
+}
+.flex-msc {
+  .flex-ms;
+  .ai-c;
+}
+.flex-mse {
+  .flex-ms;
+  .ai-e;
+}
+
+.flex-mas {
+  .flex-ma;
+  .ai-s;
+}
+.flex-mab {
+  .flex-ma;
+  .ai-b;
+}
+.flex-mac {
+  .flex-ma;
+  .ai-c;
+}
+.flex-mae {
+  .flex-ma;
+  .ai-e;
+}
+
+.flex-mbs {
+  .flex-mb;
+  .ai-s;
+}
+.flex-mbb {
+  .flex-mb;
+  .ai-b;
+}
+.flex-mbc {
+  .flex-mb;
+  .ai-c;
+}
+.flex-mbe {
+  .flex-mb;
+  .ai-e;
+}
+
+.flex-mcs {
+  .flex-mc;
+  .ai-s;
+}
+.flex-mcb {
+  .flex-mc;
+  .ai-b;
+}
+.flex-mcc {
+  .flex-mc;
+  .ai-c;
+}
+.flex-mce {
+  .flex-mc;
+  .ai-e;
+}
+
+.flex-mes {
+  .flex-me;
+  .ai-s;
+}
+.flex-meb {
+  .flex-me;
+  .ai-b;
+}
+.flex-mec {
+  .flex-me;
+  .ai-c;
+}
+.flex-mee {
+  .flex-me;
+  .ai-e;
+}
