@@ -22,21 +22,6 @@
 - 或者手动引入 -old 文件（查看下面说明）
 [所有参数介绍](https://ououe.com/lib/m-less.html)
 
-## 目录结构
-```
-+- less
-  +- alias-old.less 属性简写，浏览器前缀兼容
-  +- alias.less 属性简写（默认）
-  +- base.less 清除浏览器默认样式
-  +- flex-old.less flex 类名，浏览器前缀兼容
-  +- flex.less flex 类名（默认）
-  +- mixins.less 输出 mixins 文件
-  +- mixitem.less 常用属性值简写
-  +- styles.less 输出文件
-  +- svg.less 整理的简单 svg 图片（未来可能有较大变动）
-  +- variable.less 变量文件
-```
-
 ## 组件开发（以vue为例）
 1. 在项目 main.js 中引入 styles.less
 ```js
@@ -82,5 +67,5 @@ import "./less/styles.less";
 
 ## 手动引入 -old
 **仅对内置属性处理**
-1. 将 mixins.less 里面的 @import "alias"; 改为 @import "alias-old";
-2. 将 styles.less 里面的 @import "flex"; 改为 @import "flex-old";
+1. 将 mixins.less 里面的 `alias` 改为 `alias-old`
+1. 将 mixins.less 里面的 `flex` 改为 `flex-old`

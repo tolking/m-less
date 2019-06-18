@@ -1,44 +1,47 @@
-@import "../mixins/alias-old";
+@import "../mixins/alias";
 
 .flex () {
-  .flex>.box;
+  .d(flex);
 }
 
 .fxd-c () {
-  .fxd>.column;
+  .fxd(column);
 }
 
 .fxw-w () {
-  .fxw>.wrap;
+  .fxw(wrap);
 }
 
 .jc-s () {
-  .jc>.start;
+  .jc(flex-start);
 }
 .jc-a () {
-  .jc>.around;
+  .jc(space-around);
 }
 .jc-b () {
-  .jc>.between;
+  .jc(space-between);
 }
 .jc-c () {
-  .jc>.center;
+  .jc(center);
 }
 .jc-e () {
-  .jc>.end;
+  .jc(flex-end);
 }
 
 .ai-s () {
-  .ai>.start;
+  .ai(flex-start);
 }
 .ai-b () {
-  .ai>.baseline;
+  .ai(baseline);
 }
 .ai-c () {
-  .ai>.center;
+  .ai(center);
 }
 .ai-e () {
-  .ai>.end;
+  .ai(flex-end);
+}
+.ai-h () {
+  .ai(stretch);
 }
 
 .ac-s () {
@@ -58,11 +61,11 @@
 }
 
 .reverse-x () {
-  .fxd>.row-r;
+  .fxd(row-reverse);
 }
 .reverse-y () {
-  .fxd>.column-r;
+  .fxd(column-reverse);
 }
 .reverse-w () {
-  .fxw>.wrap-r;
+  .fxw(wrap-reverse);
 }
